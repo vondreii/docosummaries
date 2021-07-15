@@ -1,0 +1,45 @@
+a {
+  transition: .3s;
+}
+
+.footer {
+  position: relative;
+  padding-top: 20px;
+  font-size:10pt;
+}
+
+.footer .footer-links {
+  // position: relative;
+  margin-bottom: 45px;
+  color: #999999;
+}
+
+.footer .footer-links h6 {
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.footer .footer-links .link a {
+  display: block;
+  margin-bottom: 12px;
+  color: #999999;
+}
+
+.footer .footer-links a:last-child {
+  margin: 0;
+}
+
+.footer .footer-links .link a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+.footer .footer-links a::before {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  left: 0;
+}
