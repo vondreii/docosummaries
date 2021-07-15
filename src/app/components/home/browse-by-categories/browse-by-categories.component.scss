@@ -6,6 +6,26 @@ h2 {
   font-size:30pt;
   font-weight:bold;
 }
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size:20pt;
+    font-weight:bold;
+  }
+}
+@media only screen and (max-width: 300px) {
+  h2 {
+    font-size:14pt;
+    font-weight:bold;
+  }
+}
 span {
+  color:orange;
+}
+a {
+  text-decoration:none;
+  color:white;
+  line-height:2.5;
+}
+a:hover {
   color:orange;
 }

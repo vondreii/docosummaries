@@ -1,6 +1,6 @@
 <div class="browseByCategories pb-3 mb-5">
   <h2 class="pb-3 pt-5">Browse By <span>Categories</span></h2>
   <div *ngFor="let category of categoryList | async"  role="listitem">
-    <p>{{category.name}}</p>
+    <a routerLink="/about">{{category.name}}</a>
   </div>
 </div>
