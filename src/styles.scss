@@ -1,16 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500&display=swap');
+
+* {
+  font-family:'Montserrat', sans-serif;
+}
 .content {
   padding: 50px 100px;
 }
 @media only screen and (max-width: 600px) {
   .content {
-    padding: 50px 20px;
+    padding: 50px 50px;
   }
 }
 
-body, h1, h2, h3, h4, h5, h6 {
-  font-family: "Lato", sans-serif
-}
+
 
 .bg-main {
   background-color:#191523;

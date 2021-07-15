@@ -1,5 +1,6 @@
-
-<h2>Browse By Tags</h2>
-<div *ngFor="let tag of tagsList | async"  role="listitem">
-  <p>{{tag.name}}</p>
+<div class="browseByTags pb-3 mb-5">
+  <h2 class="pb-3 pt-5">Browse By <span>Tags</span></h2>
+  <div *ngFor="let tag of tagsList | async"  role="listitem">
+    <p>{{tag.name}}</p>
+  </div>
 </div>
