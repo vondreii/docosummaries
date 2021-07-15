@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "project-template": {
+    "docosummaries": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/project-template",
+            "outputPath": "dist/docosummaries",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "project-template:build"
+            "browserTarget": "docosummaries:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "project-template:build:production"
+              "browserTarget": "docosummaries:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "project-template:build"
+            "browserTarget": "docosummaries:build"
           }
         },
         "test": {
@@ -125,16 +125,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "project-template:serve"
+            "devServerTarget": "docosummaries:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "project-template:serve:production"
+              "devServerTarget": "docosummaries:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "project-template"
+  "defaultProject": "docosummaries"
 }
