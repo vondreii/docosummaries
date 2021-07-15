@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 .content {
-  padding: 50px 100px
+  padding: 50px 100px;
+}
+@media only screen and (max-width: 600px) {
+  .content {
+    padding: 50px 20px;
+  }
 }
 
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif
+}
+
+.bg-main {
+  background-color:#191523;
 }

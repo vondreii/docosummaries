@@ -2,26 +2,45 @@
 <!-- This is a simple default bootstrap navbar -->
 <!-- For more navbars, you can go to https://www.w3schools.com/bootstrap/bootstrap_navbar.asp -->
 <!-- or other websites like Corolib: https://colorlib.com/wp/bootstrap-navbar/ -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand pr-5" routerLink="">Brand Name</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/documentaries">Documentary List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
-      </li>
-    </ul>
+  <div class="navbar navbar-expand-lg navbar-dark bg-main nav-style p-4">
+    <!-- Docosummaries Brand -->
+    <a class="navbar-brand pr-5 padding-custom" routerLink=""><b>DocoSummaries</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapsible Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Empty Link to push others to the right -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item active">
+            <app-searchbar></app-searchbar>
+        </li>
+      </ul>
+      <ul class="navbar-nav padding-custom">
+          <!-- Home -->
+          <!-- <li class="nav-item">
+              <a class="nav-link pr-5" href="">Home</a>
+          </li> -->
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link pr-5" href="">Home</a>
+          </li>
+          <!-- Blog -->
+          <li class="nav-item">
+            <a class="nav-link pr-5" href="/documentaries">Summaries</a>
+          </li>
+          <!-- About -->
+          <li class="nav-item">
+            <a class="nav-link pr-5" href="/about">About</a>
+          </li>
+          <!-- Contact -->
+          <li class="nav-item">
+              <a class="nav-link pr-5" href="/contact">Contact</a>
+          </li>
+      </ul>
+    </div>
   </div>
-</nav>
+  

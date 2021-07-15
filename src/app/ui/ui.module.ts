@@ -6,6 +6,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { DocumentaryPreviewComponent } from './documentary-preview/documentary-preview.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports: [
     ButtonComponent,

@@ -1,0 +1,11 @@
+.nav-style {
+  border-bottom: 1px solid #8a888f;
+  padding-top: 10px;
+}
+
+@media only screen and (min-width: 1600px) {
+  .padding-custom {
+    padding-left: 200px;
+    padding-right: 200px
+  }
+}

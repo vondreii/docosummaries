@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JumbotronComponent implements OnInit {
 
+  documentariesLink: any = "/documentaries";
+
   constructor() { }
 
   ngOnInit(): void {
