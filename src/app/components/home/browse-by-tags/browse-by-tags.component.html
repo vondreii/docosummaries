@@ -1,6 +1,13 @@
 <div class="browseByTags pb-3 mb-5">
   <h2 class="pb-3 pt-5">Browse By <span>Tags</span></h2>
-  <div *ngFor="let tag of tagsList | async"  role="listitem">
-    <a routerLink="/about">{{tag.name}}</a>
+  <div *ngFor="let tag of tagsList | async"  role="listitem"><div class="browseByTags pb-3 mb-2">
+    <app-tag [paramName]="tag.name"></app-tag>
+    <!-- <a routerLink="/about">{{tag.name}}</a> -->
   </div>
 </div>
+<!-- <div class="display: inline-block"></div>
+<app-tag class="display: inline-block" [tagName]="tagName"></app-tag>
+<app-tag class="display: inline-block" [tagName]="tagName"></app-tag>
+<app-tag class="display: inline-block" [tagName]="tagName"></app-tag>
+<app-tag class="display: inline-block" [tagName]="tagName"></app-tag>
+<app-tag class="display: inline-block" [tagName]="tagName"></app-tag> -->

@@ -7,6 +7,7 @@ import { DocumentaryPreviewComponent } from './documentary-preview/documentary-p
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { TagComponent } from './tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppRoutingModule } from '../app-routing.module';
     SearchbarComponent,
     DocumentaryPreviewComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    TagComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { AppRoutingModule } from '../app-routing.module';
     SearchbarComponent,
     DocumentaryPreviewComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    TagComponent
   ]
 })
 export class UiModule { }

@@ -1,0 +1,23 @@
+.tag {
+  text-align:center;
+}
+.tag button {
+  background-color: orange;
+  padding: 10px 10px;
+  border: none;
+  color:white;
+  border-radius:25px;
+  font-weight:900;
+}
+@media only screen and (min-width: 1200px) {
+  .tag {
+    // padding-left: 30%;
+    // padding-right: 30%;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
+  .tag {
+    // padding-left: 10%;
+    // padding-right: 10%;
+  }
+}

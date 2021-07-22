@@ -7,12 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  // Parameters
+  //@Input() paramItem: string;
   @Input() navLink: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.navLink = "/documentaries";
+    console.log(this.navLink);
   }
 
 }

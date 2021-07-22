@@ -9,6 +9,7 @@ import { TagService } from 'src/app/services/tag.service';
 export class BrowseByTagsComponent implements OnInit {
 
   tagsList: any;
+  tagName: string
 
   constructor(
     private tagService: TagService
@@ -16,6 +17,7 @@ export class BrowseByTagsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTagsList();
+    this.tagName = "Hello";
   }
 
   getTagsList() {
