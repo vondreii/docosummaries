@@ -14,7 +14,6 @@ export class TagComponent implements OnInit {
 
   ngOnInit(): void {
     this.navLink = "/documentaries/"+this.paramName;
-    console.log(this.navLink);
   }
 
 }

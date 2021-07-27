@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
+  @Input() categoryName: string;
+  @Input() categoryDescription: string;
+  @Input() categoryLink: string;
+  navLink = "";
+
   constructor() { }
 
   ngOnInit(): void {
+    this.navLink = "/documentaries/"+this.categoryLink;
+    console.log(this.navLink);
   }
 
 }

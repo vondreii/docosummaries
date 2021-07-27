@@ -1,6 +1,28 @@
 <div class="browseByCategories pb-3 mb-5">
-  <h2 class="pb-3 pt-5">Browse By <span>Categories</span></h2>
-  <div *ngFor="let category of categoryList | async"  role="listitem">
-    <a routerLink="/about">{{category.name}}</a>
+  <h2 class="pb-5 pt-5">Browse By <span>Categories</span></h2>
+  <div class="row">
+    <div class="column">
+      <app-card 
+        [categoryName]="categoryName[0]" 
+        [categoryDescription]="categoryDescription[0]" 
+        [categoryLink]="categoryLink[0]">
+      </app-card>
+    </div>
+    <div class="column">
+      <app-card 
+        [categoryName]="categoryName[1]" 
+        [categoryDescription]="categoryDescription[1]" 
+        [categoryLink]="categoryLink[1]">
+      </app-card>
+    </div>
+    <div class="column">
+      <app-card 
+        [categoryName]="categoryName[2]" 
+        [categoryDescription]="categoryDescription[2]" 
+        [categoryLink]="categoryLink[2]">
+      </app-card>
+    </div>
   </div>
+  <br>
+  <a class="mt-5 pt-5 darkGreyText" routerLink="/documentaries">View All</a>
 </div>

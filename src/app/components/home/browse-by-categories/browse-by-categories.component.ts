@@ -8,6 +8,11 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class BrowseByCategoriesComponent implements OnInit {
 
+  categoryName: Array<string> = ["Architecture and something", "Disasters", "Blah"];
+  categoryDescription: Array<string> = ["Lorum ipsum", "Lorum ipsum", "Lorum ipsum"];
+  categoryLink: Array<string> = ["ArchitectureAndSomething", "DisastersLink", "BlahLink"];
+
+
   categoryList: any;
 
   constructor(
@@ -20,5 +25,6 @@ export class BrowseByCategoriesComponent implements OnInit {
 
   getCategoryList() {
     this.categoryList = this.categoryService.getAllCategories();
+    console.log(this.categoryList)
   }
 }
