@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  template: `<app-about-description></app-about-description>
-  <app-contributors></app-contributors>`
+  templateUrl: 'about.component.html',
+  styleUrls: ['about.component.scss']
 })
 export class AboutComponent implements OnInit {
 

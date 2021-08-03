@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  template: `<app-form></app-form>`
+  templateUrl: 'contact.component.html',
+  styleUrls: ['contact.component.scss']
 })
 export class ContactComponent implements OnInit {
 
