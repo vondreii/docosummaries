@@ -1,0 +1,100 @@
+/* Jumbotron */
+.jumbo-styling {
+  color:white;
+  line-height: 2;
+  letter-spacing:1px;
+  text-align:center;
+}
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
+  .jumbo-styling {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .jumbo-styling {
+    padding-left: 30%;
+    padding-right: 30%;
+  }
+}
+
+/* Browse by Tags */
+.browseByTags {
+  text-align:center;
+  color:white;
+}
+
+/* Browse by Categories */
+.browseByCategories {
+  text-align:center;
+  color:white;
+}
+
+/* Headings */
+h1 {
+  font-size:35pt;
+  font-weight:bold;
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size:20pt;
+    font-weight:bold;
+  }
+}
+@media only screen and (max-width: 300px) {
+  h1 {
+    font-size:14pt;
+    font-weight:bold;
+  }
+}
+h2 {
+  font-size:30pt;
+  font-weight:bold;
+}
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size:20pt;
+    font-weight:bold;
+  }
+}
+@media only screen and (max-width: 300px) {
+  h2 {
+    font-size:14pt;
+    font-weight:bold;
+  }
+}
+
+/* Standard */
+p {
+  font-size: 10pt;
+}
+span {
+  color:orange;
+}
+
+/* Float three columns side by side */
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  /* background-image: url('../../assets/images/cards.jpg'); */
+  text-align: center;
+  width: 33%;
+  padding: 0 50px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 1200px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}

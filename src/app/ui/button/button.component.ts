@@ -14,7 +14,6 @@ export class ButtonComponent implements OnInit {
 
   ngOnInit(): void {
     this.navLink = "/documentaries";
-    console.log(this.navLink);
   }
 
 }

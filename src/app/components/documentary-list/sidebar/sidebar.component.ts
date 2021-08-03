@@ -38,7 +38,6 @@ export class SidebarComponent implements OnInit {
   async buildSideBarOptions() {
     // For every category, get all the tags and put them into the map.
     for (let i = 0; i < this.allCategories.length; i++) {
-      console.log(this.allCategories[i].name);
       this.sideBarOptions.set(this.allCategories[i].name, await this.tagService.getTagByCategory(this.allCategories[i].name));
     }
 
@@ -47,7 +46,6 @@ export class SidebarComponent implements OnInit {
 
     // Convert the map into an array so it can be looped through in the HTML
     this.tagList = Array.from(this.sideBarOptions.values());
-    console.log(this.tagList);
   }
   
 }

@@ -1,15 +1,42 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/services/category.service';
+import { TagService } from 'src/app/services/tag.service';
 
 @Component({
-  template: `<app-jumbotron></app-jumbotron>
-  <app-browse-by-tags></app-browse-by-tags>
-  <app-browse-by-categories></app-browse-by-categories>`
+  templateUrl: 'home.component.html',
+  styleUrls: ['home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  documentariesLink: any = "/documentaries";
+  tagsList: any;
+  tagName: string
+
+  //Testing categories
+  // categoryName: Array<string> = ["Architecture and something", "Disasters", "Blah"];
+  // categoryDescription: Array<string> = ["Lorum ipsum", "Lorum ipsum", "Lorum ipsum"];
+  // categoryLink: Array<string> = ["ArchitectureAndSomething", "DisastersLink", "BlahLink"];
+  categoryList: any;
+
+  constructor(
+    private tagService: TagService,
+    private categoryService: CategoryService
+  ) { }
 
   ngOnInit(): void {
+    this.getTagsList();
+    this.getCategoryList();
   }
 
+  getTagsList() {
+    this.tagsList = this.tagService.getAllTags();
+    console.log("Tags");
+    console.log(this.tagsList);
+  }
+
+  getCategoryList() {
+    this.categoryList = this.categoryService.getAllCategories();
+    // console.log("Categories");
+    console.log(this.categoryList);
+  }
 }

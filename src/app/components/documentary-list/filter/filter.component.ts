@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-filter',
@@ -8,13 +9,37 @@ import { Component, OnInit } from '@angular/core';
 export class FilterComponent implements OnInit {
 
   category: string;
-  tag: string;
+  tag: string = "";
+  href: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { 
+    this.route.params.subscribe(params => {
+      this.getTag();
+      this.getCategory();
+    });
+  }
 
   ngOnInit(): void {
-    this.category = "Animals, Plants and Wildlife";
-    this.tag = "Diet And Exercise";
+    this.getTag();
+    this.getCategory();
+  }
+
+  getTag() {
+    let href = document.location.href;
+    href = href.substring(href.lastIndexOf("/")+1, href.length);
+    href = href.split('%20').join(' ');
+    console.log("route: " + href);
+
+    this.tag = href;
+  }
+
+  getCategory() {
+    let href = document.location.href;
+    href = href.substring(href.lastIndexOf("/")+1, href.length);
+    href = href.split('%20').join(' ');
+    console.log("route: " + href);
+
+    this.category = href;
   }
 
 }
