@@ -6,14 +6,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class TagService {
 
-  categoriesList = new Map([
-    ["animals-plants-wildlife", "animals-plants-wildlife"],
-    ["biographies", "biographies"],
-    ["business", "business"],
-    ["conspiracies", "conspiracies"],
-    ["construction-and-engineering", "construction-and-engineering"],
-    ["disasters-man-made", "disasters-man-made"]
-  ]); 
+  // categoriesList = new Map([
+  //   ["animals-plants-wildlife", "animals-plants-wildlife"],
+  //   ["biographies", "biographies"],
+  //   ["business", "business"],
+  //   ["conspiracies", "conspiracies"],
+  //   ["construction-and-engineering", "construction-and-engineering"],
+  //   ["disasters-man-made", "disasters-man-made"]
+  // ]); 
 
   constructor(private db: AngularFirestore) { }
 

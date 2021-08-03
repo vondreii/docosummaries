@@ -1,10 +1,10 @@
 <div *ngFor="let tags of tagList">
-  <h2 *ngIf="selectedCategory == tags[0].categoryName" style="color:green">{{ tags[0].categoryName }}</h2>
-  <h2 *ngIf="selectedCategory != tags[0].categoryName" style="color:black">{{ tags[0].categoryName }}
+  <h2 *ngIf="selected == tags[0].categoryName" style="color:green">{{ tags[0].categoryName }}</h2>
+  <h2 *ngIf="selected != tags[0].categoryName" style="color:black">{{ tags[0].categoryName }}
   </h2>
   <div *ngFor="let tag of tags">
-    <p *ngIf="selectedTag == tag.name" style="color:green">{{tag.name}}</p>
-    <p *ngIf="selectedTag != tag.name" style="color:black">{{tag.name}}</p>
+    <p *ngIf="selected == tag.name" style="color:green">{{tag.name}}</p>
+    <p *ngIf="selected != tag.name" style="color:black">{{tag.name}}</p>
   </div>
 </div>
 

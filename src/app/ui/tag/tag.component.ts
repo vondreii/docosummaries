@@ -13,7 +13,7 @@ export class TagComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.navLink = "/documentaries/"+this.paramName;
+    this.navLink = "/documentaries/"+this.paramName.split(" ").join("-");
   }
 
 }

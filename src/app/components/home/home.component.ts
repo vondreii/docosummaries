@@ -23,15 +23,11 @@ export class HomeComponent implements OnInit {
     this.getCategoryList();
   }
 
-  getTagsList() {
-    this.tagsList = this.tagService.getAllTags();
-    console.log("Tags");
-    console.log(this.tagsList);
+  async getTagsList() {
+    this.tagsList = await this.tagService.getAllTags();
   }
 
-  getCategoryList() {
-    this.categoryList = this.categoryService.getAllCategories();
-    // console.log("Categories");
-    console.log(this.categoryList);
+  async getCategoryList() {
+    this.categoryList = await this.categoryService.getAllCategories();
   }
 }

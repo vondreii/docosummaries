@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { TagService } from 'src/app/services/tag.service';
+import { DocumentaryService } from 'src/app/services/documentary.service';
 
 @Component({
   templateUrl: 'documentary-list.component.html',
@@ -11,8 +12,7 @@ import { TagService } from 'src/app/services/tag.service';
 export class DocumentaryListComponent implements OnInit {
 
   // Selected tag and category based on URL
-  selectedCategory: string;
-  selectedTag: string;
+  selected: string;
 
   // Get all Categories
   allCategories: any;
@@ -20,16 +20,22 @@ export class DocumentaryListComponent implements OnInit {
   // Build Sidebar. Nest Tags underneath their Categories.
   sideBarOptions = new Map();
   tagList = new Array();
+  
+  docoList: any;
+  isCategory: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private tagService: TagService
+    private tagService: TagService,
+    private docoService: DocumentaryService
   ) { 
     this.route.params.subscribe(params => {
       this.getSelectedParams().then(() => {
         this.getCategoryList().then(() => {
-          this.buildSideBarOptions();
+          this.buildSideBarOptions().then(() => {
+            this.listDocos();
+          });
         });
       });
     });
@@ -38,7 +44,9 @@ export class DocumentaryListComponent implements OnInit {
   ngOnInit(): void {
     this.getSelectedParams().then(() => {
       this.getCategoryList().then(() => {
-        this.buildSideBarOptions();
+        this.buildSideBarOptions().then(() => {
+          this.listDocos();
+        });
       });
     });
   }
@@ -61,13 +69,34 @@ export class DocumentaryListComponent implements OnInit {
     this.tagList = Array.from(this.sideBarOptions.values());
   }
 
+  listDocos() {
+    // Find if selected is a tag or a category
+    this.tagList.forEach(async tag => {
+      if(tag[0].name == this.selected) {
+        // TODO PRINT THE LIST RETURNED ONTO THE SCREEN
+        // TEST WITH MORE DOCOS
+        this.isCategory = false;
+        this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
+        console.log(this.docoList);
+      }
+    });
+    this.allCategories.forEach(async category => {
+      if(category.name == this.selected) {
+        // TODO PRINT THE LIST RETURNED ONTO THE SCREEN
+        // TEST WITH MORE DOCOS
+        this.isCategory = true;
+        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected);
+        console.log(this.docoList);
+      }
+    });
+  }
+
   async getSelectedParams() {
     let href = document.location.href;
     href = href.substring(href.lastIndexOf("/")+1, href.length);
-    href = href.split('%20').join(' ');
+    href = href.split('-').join(' ');
     href = href.split('%28').join('(');
     href = href.split('%29').join(')');
-    this.selectedTag = href;
-    this.selectedCategory = href;
+    this.selected = href;
   }
 }
