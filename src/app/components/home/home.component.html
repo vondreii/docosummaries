@@ -10,7 +10,7 @@
 <!-- Browse By Tags -->
 <div class="browseByTags pb-3 mb-5">
   <h2 class="pb-3 pt-5">Browse By <span>Tags</span></h2>
-  <div *ngFor="let tag of tagsList | async"  role="listitem">
+  <div *ngFor="let tag of tagsList | async | slice:0:6; let i=index"  role="listitem">
     <div class="browseByTags pb-3 mb-2">
       <app-tag [paramName]="tag.name"></app-tag>
     </div>
@@ -21,7 +21,7 @@
 <div class="browseByCategories pb-3 mb-5">
   <h2 class="pb-5 pt-5">Browse By <span>Categories</span></h2>
   <div class="row">
-    <div class="column" *ngFor="let category of categoryList | async"  role="listitem">
+    <div class="column" *ngFor="let category of categoryList | async | slice:0:3; let i=index"  role="listitem">
       <app-card 
         [categoryName]="category.name" 
         [categoryDescription]="category.categoryDescription" 

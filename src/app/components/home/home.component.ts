@@ -11,11 +11,6 @@ export class HomeComponent implements OnInit {
   documentariesLink: any = "/documentaries";
   tagsList: any;
   tagName: string
-
-  //Testing categories
-  // categoryName: Array<string> = ["Architecture and something", "Disasters", "Blah"];
-  // categoryDescription: Array<string> = ["Lorum ipsum", "Lorum ipsum", "Lorum ipsum"];
-  // categoryLink: Array<string> = ["ArchitectureAndSomething", "DisastersLink", "BlahLink"];
   categoryList: any;
 
   constructor(
