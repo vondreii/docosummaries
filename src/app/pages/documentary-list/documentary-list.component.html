@@ -1,22 +1,45 @@
 <div class="docoList content">
-  <div *ngFor="let tags of tagList">
-    <!-- Selected Category -->
-    <ng-container *ngIf="selected == tags[0].categoryName">
-        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink">{{ tags[0].categoryName }}</a></h2>
-    </ng-container>
-    <!-- Category -->
-    <ng-container *ngIf="selected != tags[0].categoryName">
-        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText">{{ tags[0].categoryName }}</a></h2>
-    </ng-container>
-    <div *ngFor="let tag of tags">
-      <!-- Selected Tag -->
+  <div class="float-left" style="width: 500px">
+    <div *ngFor="let tags of tagList">
+      <!-- Selected Category -->
+      <ng-container *ngIf="selected == tags[0].categoryName">
+        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink sidebarLink">{{
+            tags[0].categoryName }}</a></h2>
+      </ng-container>
+      <!-- Category -->
+      <ng-container *ngIf="selected != tags[0].categoryName">
+        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink">{{
+            tags[0].categoryName }}</a></h2>
+      </ng-container>
+      <div *ngFor="let tag of tags">
+        <!-- Selected Tag -->
         <ng-container *ngIf="selected == tag.name">
-            <p><a routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink">#{{tag.name}}</a></p>
+          <p><a routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink sidebarLink pl-3">#{{tag.name}}</a></p>
         </ng-container>
         <ng-container *ngIf="selected != tag.name">
-            <p><a routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText">#{{tag.name}}</a></p>
+          <p><a routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText sidebarLink pl-3">#{{tag.name}}</a></p>
         </ng-container>
+      </div>
+    </div>
+  </div>
+  <div style="width: 800px">
+    <h1>Summaries</h1>
+    <div class="list">
+      <ng-container *ngIf="docoList">
+        <ng-container *ngFor="let doco of docoList">
+          <h4 class="pt-5 pb-2 title">{{doco.name}}</h4>
+          <p class="pb-2 desc">{{doco.description}}</p>
+          <a class="readMore pb-5" routerLink="./">Learn More ></a>
+          <br>
+          <hr>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="docoList === undefined || docoList.length == 0">
+          <p class="pt-5">There are no documentaries available.</p>
+      </ng-container>
     </div>
   </div>
 </div>
+
+
 

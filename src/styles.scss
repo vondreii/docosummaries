@@ -7,12 +7,12 @@
 }
 .outer-container,
 .content {
-  padding: 36px 200px;
+  padding: 24px 200px;
 }
 @media only screen and (max-width: 1360px) and (min-width: 801px) {
   .outer-container,
   .content {
-    padding: 36px 48px;
+    padding: 24px 48px;
   }
 }
 @media only screen and (max-width: 800px) {
@@ -41,6 +41,8 @@
   text-decoration: none;
 }
 
-p {
+p,
+h2,
+h4 {
   color: #dcdcdc;
 }

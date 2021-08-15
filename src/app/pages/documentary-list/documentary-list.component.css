@@ -1,3 +1,11 @@
+.docoList {
+  display: flex;
+}
+
+.test {
+  width: 500px;
+}
+
 .docoList p {
   color: white;
 }
@@ -5,4 +13,39 @@
 .selectedLink {
   text-decoration: none;
   color: #fc9815;
+}
+
+h2 .sidebarLink {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+p .sidebarLink {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+hr {
+  border: 1px solid #747474;
+}
+
+h1 {
+  font-weight: bold;
+  color: #dcdcdc;
+}
+
+.title {
+  font-weight: bold;
+}
+.desc {
+  line-height: 2;
+}
+
+.readMore {
+  color: orange;
+  text-decoration: none;
+  float: right;
+  text-align: right;
 }

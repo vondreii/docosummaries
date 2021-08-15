@@ -75,19 +75,22 @@ export class DocumentaryListComponent implements OnInit {
 
   listDocos() {
     // Find if selected is a tag or a category
-    this.tagList.forEach(async tag => {
-      if(tag[0].name == this.selected) {
-        // TODO PRINT THE LIST RETURNED ONTO THE SCREEN
-        // TEST WITH MORE DOCOS
+    this.tagList.forEach(tags => {
+      tags.forEach(async tag => {
+        if(tag.name == this.selected) {
         this.isCategory = false;
         this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
         console.log(this.docoList);
+        console.log(this.docoList);
+        console.log(this.docoList);
+        console.log(this.docoList);
+        console.log(this.docoList);
+        console.log(this.docoList);
       }
+      });
     });
     this.allCategories.forEach(async category => {
       if(category.name == this.selected) {
-        // TODO PRINT THE LIST RETURNED ONTO THE SCREEN
-        // TEST WITH MORE DOCOS
         this.isCategory = true;
         this.docoList = await this.docoService.getDocumentaryByCategory(this.selected);
         console.log(this.docoList);
@@ -104,7 +107,6 @@ export class DocumentaryListComponent implements OnInit {
     href = href.split('%29').join(')');
     this.selected = href;
   }
-
 
   changeSelection(paramName) { 
     let nav = "/documentaries/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
