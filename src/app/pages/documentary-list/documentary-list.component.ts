@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { TagService } from 'src/app/services/tag.service';
 import { DocumentaryService } from 'src/app/services/documentary.service';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: 'documentary-list.component.html',
@@ -24,11 +25,14 @@ export class DocumentaryListComponent implements OnInit {
   docoList: any;
   isCategory: boolean = true;
 
+  navlink: string;
+
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private tagService: TagService,
-    private docoService: DocumentaryService
+    private docoService: DocumentaryService,
+    private router: Router
   ) { 
     this.route.params.subscribe(params => {
       this.getSelectedParams().then(() => {
@@ -94,9 +98,16 @@ export class DocumentaryListComponent implements OnInit {
   async getSelectedParams() {
     let href = document.location.href;
     href = href.substring(href.lastIndexOf("/")+1, href.length);
+    href = href.split('%20').join(' ');
     href = href.split('-').join(' ');
     href = href.split('%28').join('(');
     href = href.split('%29').join(')');
     this.selected = href;
+  }
+
+
+  changeSelection(paramName) { 
+    let nav = "/documentaries/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
+    this.router.navigateByUrl(nav);
   }
 }

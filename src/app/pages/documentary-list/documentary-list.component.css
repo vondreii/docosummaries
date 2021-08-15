@@ -1,0 +1,8 @@
+.docoList p {
+  color: white;
+}
+
+.selectedLink {
+  text-decoration: none;
+  color: #fc9815;
+}

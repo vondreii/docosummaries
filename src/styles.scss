@@ -1,27 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500&display=swap");
 
 * {
-  font-family:'Montserrat', sans-serif;
-  background-color:#191523;
+  font-family: "Montserrat", sans-serif;
+  background-color: #191523;
 }
+.outer-container,
 .content {
-  padding: 50px 100px;
+  padding: 36px 200px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1360px) and (min-width: 801px) {
+  .outer-container,
   .content {
-    padding: 50px 50px;
+    padding: 36px 48px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .outer-container,
+  .content {
+    padding: 16px 16px;
   }
 }
 
 .bg-main {
-  background-color:#191523;
+  background-color: #191523;
 }
 
 .darkGreyText {
-  color:darkgrey
+  color: darkgrey;
 }
 .darkGreyText:hover {
-  color:orange;
-  text-decoration:none;
+  color: orange;
+  text-decoration: none;
+}
+.lightGreyText {
+  color: lightgrey;
+}
+.lightGreyText:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+p {
+  color: #dcdcdc;
 }

@@ -1,0 +1,70 @@
+
+
+Pages
+------
+> About
+> Contact
+	> Uses Formspree
+> DocumentaryList
+	> Will show the Sidebar, doco preview
+	> Parameter: Tag or Category.
+> Home
+	> 3 Categories
+	> For each with List of cards for documentary/category previews
+	> For each with List of tags
+
+The pages will display components from below. The typescript shouldn't have much in these (?):
+
+
+Components
+----------
+> Header
+	> Has links at the top and searchbar
+> Footer
+	> More links
+---------------------------------
+> jumbotron
+	> The front thing
+> list-categories
+	> A list of all/some tags for something
+> list-tags
+	> These are the small #hash-things?
+---------------------------------
+> CardList
+	> Has a list of cards in the HTML
+	> get categories list preview (add 3 IDs, could be hardcoded)
+	> get list of documentaries (add 3 IDs, could be hardcoded)
+> Card
+	> These are the cards used as previews
+		> getCategoryName(id)
+> Sidebar
+	> The sidebar for the DocumentaryList
+> DocumentaryPreview
+	> Is the little boxes that show. For each documentary.
+> Searchbar?
+
+
+Models
+------
+> Models (classes can stay in one file)
+
+
+Controllers (If needed)
+-----------
+> CategoryController
+	> getCategoriesListPreview(with the ids), for each ID, 
+
+
+Services
+--------
+> CategoryService
+	> There could be a structure with all the categories stored in them already: id-manMadeDisasters
+	> getCategoryById (returns Category)
+	> getCategoryByName (returns Category)
+
+
+
+
+
+
+

@@ -11,10 +11,10 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 // Modules
 import { UiModule } from './ui/ui.module';
-import { HomeModule } from './components/home/home.module';
-import { DocumentaryListModule } from './components/documentary-list/documentary-list.module';
-import { AboutModule } from './components/about/about.module';
-import { ContactModule } from './components/contact/contact.module';
+import { HomeModule } from './pages/home/home.module';
+import { DocumentaryListModule } from './pages/documentary-list/documentary-list.module';
+import { AboutModule } from './pages/about/about.module';
+import { ContactModule } from './pages/contact/contact.module';
 
 @NgModule({
   declarations: [

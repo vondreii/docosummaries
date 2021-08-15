@@ -1,0 +1,22 @@
+<div class="docoList content">
+  <div *ngFor="let tags of tagList">
+    <!-- Selected Category -->
+    <ng-container *ngIf="selected == tags[0].categoryName">
+        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink">{{ tags[0].categoryName }}</a></h2>
+    </ng-container>
+    <!-- Category -->
+    <ng-container *ngIf="selected != tags[0].categoryName">
+        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText">{{ tags[0].categoryName }}</a></h2>
+    </ng-container>
+    <div *ngFor="let tag of tags">
+      <!-- Selected Tag -->
+        <ng-container *ngIf="selected == tag.name">
+            <p><a routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink">#{{tag.name}}</a></p>
+        </ng-container>
+        <ng-container *ngIf="selected != tag.name">
+            <p><a routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText">#{{tag.name}}</a></p>
+        </ng-container>
+    </div>
+  </div>
+</div>
+

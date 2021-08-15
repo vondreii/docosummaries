@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DocumentaryListComponent } from './documentary-list.component';
 import { UiModule } from 'src/app/ui/ui.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -11,7 +12,8 @@ import { UiModule } from 'src/app/ui/ui.module';
   ],
   imports: [
     CommonModule,
-    UiModule
+    UiModule,
+    AppRoutingModule
   ],
   exports: [
     DocumentaryListComponent
