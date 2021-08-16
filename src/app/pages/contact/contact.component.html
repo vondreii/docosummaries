@@ -1,3 +1,28 @@
-<div class="content">
-  <p>contact form works!</p>
+<!-- Jumbotron -->
+<div class="contact">
+  <h1 class="pb-3 pt-5">Get in touch!</h1>
+  <p class="pb-5">
+    Contact us if you have any questions or would like to give us any feedback or suggestions!
+  </p>
+  <div class="formBackground p-5" style="border-radius: 10px">
+    <form action="https://formspree.io/f/xrgropnl" class="formBackground" method="POST">
+      <div class="form-group" class="formBackground p-3">
+        <input type="email" class="form-control inputPadding" id="replyTo" name="_replyto" ngModel="reply" aria-describedby="emailHelp"
+          placeholder="NAME">
+      </div>
+      <div class="form-group" class="formBackground p-3">
+        <input type="text" name="message" class="form-control inputPadding" id="message"
+          placeholder="EMAIL">
+      </div>
+      <div class="form-group" class="formBackground p-3">
+        <textarea name="message" style="height:200px" class="form-control inputPadding" id="message"
+          placeholder="MESSAGE"></textarea>
+      </div>
+      <div class="form-group" class="formBackground p-3">
+        <button type="reset" class="button reset"><b class="formBackground">RESET</b></button>
+        <button type="submit" class="button submit"><b style="background-color:orange">SUBMIT</b></button>
+      </div>
+    </form>
+  </div>
+  <div class="p-5"></div>
 </div>

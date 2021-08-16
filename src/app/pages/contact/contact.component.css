@@ -1,0 +1,77 @@
+.contact {
+  color: white;
+  line-height: 2;
+  letter-spacing: 1px;
+  text-align: center;
+}
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
+  .contact {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .contact {
+    padding-left: 30%;
+    padding-right: 30%;
+  }
+}
+
+/* Headings */
+h1 {
+  font-size: 35pt;
+  font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 20pt;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 300px) {
+  h1 {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+}
+
+/* Standard */
+p {
+  font-size: 10pt;
+}
+span {
+  color: orange;
+}
+
+.formBackground {
+  background-color: rgb(236, 236, 236);
+}
+
+.inputPadding {
+  padding: 30px 35px;
+  border-radius: 10px;
+  border: 1px solid rgb(207, 207, 207);
+  color: grey;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reset {
+  background-color: rgb(236, 236, 236);
+  border: 1px solid orange;
+  color: orange;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-right: 25px;
+}
+
+.submit {
+  background-color: orange;
+  border: 1px solid orange;
+  color: rgb(236, 236, 236);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
