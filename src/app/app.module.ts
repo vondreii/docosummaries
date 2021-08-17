@@ -9,16 +9,19 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 
+// Pages
+import { AboutComponent } from './pages/about/about.component';
+
 // Modules
 import { UiModule } from './ui/ui.module';
 import { HomeModule } from './pages/home/home.module';
 import { DocumentaryListModule } from './pages/documentary-list/documentary-list.module';
-import { AboutModule } from './pages/about/about.module';
 import { ContactModule } from './pages/contact/contact.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,6 @@ import { ContactModule } from './pages/contact/contact.module';
     UiModule,
     HomeModule,
     DocumentaryListModule,
-    AboutModule,
     ContactModule,
     // Firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
