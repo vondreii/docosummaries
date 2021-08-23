@@ -28,13 +28,13 @@
       <ng-container *ngIf="docoList">
         <ng-container *ngFor="let doco of docoList">
           <h4 class="pt-5 pb-2 title">{{doco.name}}</h4>
-          <p class="pb-2 desc">{{doco.description}}</p>
+          <p class="desc">{{doco.description}}</p>
           <a class="readMore pb-5" routerLink="./">Learn More ></a>
           <br>
           <hr>
         </ng-container>
       </ng-container>
-      <ng-container *ngIf="docoList === undefined || docoList.length == 0">
+      <ng-container *ngIf="docoList === undefined || docoList.length === 0">
           <p class="pt-5">There are no documentaries available.</p>
       </ng-container>
     </div>

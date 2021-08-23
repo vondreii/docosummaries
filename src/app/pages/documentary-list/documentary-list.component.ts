@@ -46,13 +46,13 @@ export class DocumentaryListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSelectedParams().then(() => {
-      this.getCategoryList().then(() => {
-        this.buildSideBarOptions().then(() => {
-          this.listDocos();
-        });
-      });
-    });
+    // this.getSelectedParams().then(() => {
+    //   this.getCategoryList().then(() => {
+    //     this.buildSideBarOptions().then(() => {
+    //       this.listDocos();
+    //     });
+    //   });
+    // });
   }
 
   async getCategoryList() {
@@ -77,16 +77,10 @@ export class DocumentaryListComponent implements OnInit {
     // Find if selected is a tag or a category
     this.tagList.forEach(tags => {
       tags.forEach(async tag => {
-        if(tag.name == this.selected) {
-        this.isCategory = false;
-        this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
-        console.log(this.docoList);
-        console.log(this.docoList);
-        console.log(this.docoList);
-        console.log(this.docoList);
-        console.log(this.docoList);
-        console.log(this.docoList);
-      }
+          if(tag.name == this.selected) {
+          this.isCategory = false;
+          this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
+        }
       });
     });
     this.allCategories.forEach(async category => {
@@ -106,10 +100,14 @@ export class DocumentaryListComponent implements OnInit {
     href = href.split('%28').join('(');
     href = href.split('%29').join(')');
     this.selected = href;
+    // Auto selects Health.
+    if(this.selected === 'documentariesList') {
+      this.changeSelection("Health");
+    }
   }
 
   changeSelection(paramName) { 
-    let nav = "/documentaries/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
+    let nav = "/documentariesList/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
     this.router.navigateByUrl(nav);
   }
 }

@@ -15,7 +15,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.navLink = "/documentaries/"+this.categoryLink.split(" ").join("-");
+    this.navLink = "/documentariesList/"+this.categoryLink.split(" ").join("-");
   }
 
 }

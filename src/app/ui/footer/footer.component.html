@@ -5,7 +5,7 @@
           <div class="footer-links">
               <h6>Categories</h6>
               <div class="link" *ngFor="let category of categoryList | async | slice:0:4; let i=index"  role="listitem">
-                <a routerLink="/documentaries/{{category.name.split(' ').join('-')}}">{{ category.name }}</a>
+                <a routerLink="/documentariesList/{{category.name.split(' ').join('-')}}">{{ category.name }}</a>
               </div>
           </div>
       </div>
@@ -14,7 +14,7 @@
           <div class="footer-links">
               <h6>Tags</h6>
               <div class="link" *ngFor="let tag of tagsList | async | slice:0:4; let i=index"  role="listitem">
-                <a routerLink="/documentaries/{{tag.name.split(' ').join('-')}}">{{ tag.name }}</a>
+                <a routerLink="/documentariesList/{{tag.name.split(' ').join('-')}}">{{ tag.name }}</a>
               </div>
           </div>
       </div>

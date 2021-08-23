@@ -8,7 +8,7 @@ import { TagService } from 'src/app/services/tag.service';
 })
 export class HomeComponent implements OnInit {
 
-  documentariesLink: any = "/documentaries";
+  documentariesLink: any = "/documentariesList";
   tagsList: any;
   tagName: string
   categoryList: any;

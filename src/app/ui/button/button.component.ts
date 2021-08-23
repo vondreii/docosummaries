@@ -13,7 +13,7 @@ export class ButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.navLink = "/documentaries";
+    this.navLink = "/documentariesList";
   }
 
 }

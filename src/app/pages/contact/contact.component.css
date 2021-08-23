@@ -12,8 +12,8 @@
 }
 @media only screen and (min-width: 1200px) {
   .contact {
-    padding-left: 30%;
-    padding-right: 30%;
+    padding-left: 20%;
+    padding-right: 20%;
   }
 }
 
@@ -44,7 +44,7 @@ span {
 }
 
 .formBackground {
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(228, 228, 228);
 }
 
 .inputPadding {
@@ -60,7 +60,7 @@ span {
 }
 
 .reset {
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(228, 228, 228);
   border: 1px solid orange;
   color: orange;
   padding: 10px 20px;
@@ -71,7 +71,7 @@ span {
 .submit {
   background-color: orange;
   border: 1px solid orange;
-  color: rgb(236, 236, 236);
+  color: rgb(228, 228, 228);
   padding: 10px 20px;
   border-radius: 10px;
 }
