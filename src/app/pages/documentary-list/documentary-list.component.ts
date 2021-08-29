@@ -12,6 +12,8 @@ import {Router} from '@angular/router';
 
 export class DocumentaryListComponent implements OnInit {
 
+  count = 0;
+
   // Selected tag and category based on URL
   selected: string;
 
@@ -53,7 +55,7 @@ export class DocumentaryListComponent implements OnInit {
     //     });
     //   });
     // });
-  }
+    }
 
   async getCategoryList() {
     // returns all categories from the categories table in Firebase.
@@ -86,10 +88,28 @@ export class DocumentaryListComponent implements OnInit {
     this.allCategories.forEach(async category => {
       if(category.name == this.selected) {
         this.isCategory = true;
-        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected);
+        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
+        this.count += 5;
         console.log(this.docoList);
       }
     });
+  }
+
+  numberFormat(num: number) {
+    var str = "" + num
+    var pad = "00"
+    return pad.substring(0, pad.length - str.length) + str
+  }
+
+  async onScroll() {
+    // WIP
+    console.log("Scrolled!");
+
+    let newDocos = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(this.count), 5)
+    console.log(newDocos);
+
+    this.count = +newDocos[newDocos.length-1].index;
+    console.log(this.count)
   }
 
   async getSelectedParams() {

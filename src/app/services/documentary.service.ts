@@ -14,10 +14,22 @@ export class DocumentaryService {
     })
   }
   
-  getDocumentaryByCategory(categoryName: string) {
+  getDocumentaryByCategory(categoryName: string, start: string, limit: number) {
     return new Promise<any>((resolve)=> {
       this.db.collection('documentaries', ref => ref.where('categoryName', '==', categoryName)).valueChanges().subscribe(category => resolve(category))
     })
   }
+
+  // getDocumentaryByTag(tagName: string) {
+  //   return new Promise<any>((resolve)=> {
+  //     this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName).orderBy('index')).valueChanges().subscribe(tags => resolve(tags))
+  //   })
+  // }
+  
+  // getDocumentaryByCategory(categoryName: string, start: string, limit: number) {
+  //   return new Promise<any>((resolve)=> {
+  //     this.db.collection('documentaries', ref => ref.where('categoryName', '==', categoryName).orderBy('index').startAt(start).limit(limit)).valueChanges().subscribe(category => resolve(category))
+  //   })
+  // }
 
 }
