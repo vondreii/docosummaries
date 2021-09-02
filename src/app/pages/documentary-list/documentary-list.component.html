@@ -36,14 +36,14 @@
           <hr>
         </ng-container>
         <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100" (scrolled)="onScroll()"></div>
-        <div class="row pb-5 mt-5">
+        <!-- <div class="row pb-5 mt-5">
           <br><br>
-          <!-- <h1 id="loading">Loading</h1> -->
-          <!-- <div class="col-md-12 p-5">
+          <h1 id="loading">Loading</h1>
+           <div class="col-md-12 p-5">
             <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="white" type="ball-pulse-sync" [fullScreen]="false"></ngx-spinner>
-          </div> -->
-        </div>
-        <div style="color:white">End of DB</div>
+          </div> 
+        </div> -->
+        <!-- <div style="color:white">End of DB</div> -->
       </ng-container>
       <ng-container *ngIf="docoList === undefined || docoList.length === 0">
           <p class="pt-5">There are no documentaries available.</p>

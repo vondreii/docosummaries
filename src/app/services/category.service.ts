@@ -13,4 +13,16 @@ export class CategoryService {
       this.db.collection('categories').valueChanges({ idField: 'id' }).subscribe(categories => resolve(categories));
     })
   }
+
+  getCategoryByName(categoryName: string) {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('categories', ref => ref.where('name', '==', categoryName)).valueChanges().subscribe(categories => resolve(categories))
+    })
+  }
+  
+  getCategoryByPrefix(prefix: string) {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('categories', ref => ref.where('prefix', '==', prefix)).valueChanges().subscribe(categories => resolve(categories))
+    })
+  }
 }

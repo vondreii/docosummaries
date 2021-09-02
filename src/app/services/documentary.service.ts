@@ -10,28 +10,26 @@ export class DocumentaryService {
 
   getDocumentaryByTag(tagName: string) {
     return new Promise<any>((resolve)=> {
-      this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName)).valueChanges().subscribe(tags => resolve(tags))
+      this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName)).valueChanges().subscribe(doco => resolve(doco))
     })
   }
   
   getDocumentaryByCategory(categoryName: string, start: string, limit: number) {
     return new Promise<any>((resolve)=> {
-      this.db.collection('documentaries', ref => ref.where('categoryName', '==', categoryName)).valueChanges().subscribe(category => resolve(category))
+      this.db.collection('documentaries', ref => ref.where('categoryName', '==', categoryName)).valueChanges().subscribe(doco => resolve(doco))
+    })
+  }
+
+  getDocumentaryByIndex(index: string) {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('documentaries', ref => ref.where('index', '==', index)).valueChanges().subscribe(doco => resolve(doco))
     })
   }
 
   // Move these
-  getTag(tagName: string) {
-    return new Promise<any>((resolve)=> {
-      this.db.collection('tags', ref => ref.where('name', '==', tagName)).valueChanges().subscribe(tags => resolve(tags))
-    })
-  }
+  
 
-  getCategory(categoryName: string) {
-    return new Promise<any>((resolve)=> {
-      this.db.collection('categories', ref => ref.where('name', '==', categoryName)).valueChanges().subscribe(categories => resolve(categories))
-    })
-  }
+  
 
   // getDocumentaryByTag(tagName: string) {
   //   return new Promise<any>((resolve)=> {

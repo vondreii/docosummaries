@@ -1,0 +1,42 @@
+.title {
+  font-weight: bold;
+}
+
+.description {
+  line-height: 1.5;
+}
+
+h5 {
+  color: lightgrey;
+}
+
+.words {
+  color: lightgrey;
+  line-height: 1.8;
+  margin-right: 0;
+  margin-left: 0;
+  font-size: 14pt;
+  text-decoration: none;
+}
+
+:host ::ng-deep .words ul li,
+:host ::ng-deep .words p {
+  padding-bottom: 16px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .words {
+    color: lightgrey;
+    margin-right: 15%;
+    margin-left: 15%;
+  }
+}
+
+:host ::ng-deep .words p a {
+  color: orange;
+}
+
+:host ::ng-deep .words p a:hover {
+  color: #ff960d;
+  text-decoration: none;
+}

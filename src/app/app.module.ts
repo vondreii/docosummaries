@@ -18,9 +18,9 @@ import { UiModule } from './ui/ui.module';
 import { HomeModule } from './pages/home/home.module';
 import { DocumentaryListModule } from './pages/documentary-list/documentary-list.module';
 import { ContactModule } from './pages/contact/contact.module';
-import { SummaryComponent } from './summary/summary.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SummaryComponent } from './pages/summary/summary.component';
 
 
 

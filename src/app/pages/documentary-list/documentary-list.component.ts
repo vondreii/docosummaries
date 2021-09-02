@@ -14,20 +14,12 @@ export class DocumentaryListComponent implements OnInit {
 
   count = 0;
   prefix: string = "C01";
-
-  // Selected tag and category based on URL
   selected: string;
-
-  // Get all Categories
   allCategories: any;
-
-  // Build Sidebar. Nest Tags underneath their Categories.
   sideBarOptions = new Map();
   tagList = new Array();
-  
   docoList: any;
   isCategory: boolean = true;
-
   navlink: string;
 
   constructor(
@@ -49,76 +41,9 @@ export class DocumentaryListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getSelectedParams().then(() => {
-    //   this.getCategoryList().then(() => {
-    //     this.buildSideBarOptions().then(() => {
-    //       this.listDocos();
-    //     });
-    //   });
-    // });
-    }
-
-  async getCategoryList() {
-    // returns all categories from the categories table in Firebase.
-    this.allCategories = await this.categoryService.getAllCategories();
   }
 
-  async buildSideBarOptions() {
-    // For every category, get all the tags and put them into the map.
-    for (let i = 0; i < this.allCategories.length; i++) {
-      this.sideBarOptions.set(this.allCategories[i].name, await this.tagService.getTagByCategory(this.allCategories[i].name));
-    }
-
-    //this.sideBarOptions.set("Disasters (Man Made)", await this.tagService.getTagByCategory('Disasters (Man Made)'));
-    //this.sideBarOptions.set("Animals, Plants and Wildlife", await this.tagService.getTagByCategory('Animals, Plants and Wildlife'));
-
-    // Convert the map into an array so it can be looped through in the HTML
-    this.tagList = Array.from(this.sideBarOptions.values());
-  }
-
-  async listDocos() {
-    // Find tag is selected in sidebar
-    this.tagList.forEach(tags => {
-      tags.forEach(async tag => {
-          if(tag.name == this.selected) {
-          this.isCategory = false;
-          let tag = await this.docoService.getTag(this.selected);
-          let category = await this.docoService.getCategory(tag[0].categoryName);
-          this.prefix = category[0].prefix;
-          this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
-        }
-      });
-    });
-    // If category is selected in sidebar
-    this.allCategories.forEach(async category => {
-      if(category.name == this.selected) {
-        this.isCategory = true;
-        let category = await this.docoService.getCategory(this.selected);
-        this.prefix = category[0].prefix;
-        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
-        this.count += 5;
-      }
-    });
-  }
-
-  numberFormat(num: number) {
-    var str = "" + num
-    var pad = "00000"
-    return pad.substring(0, pad.length - str.length) + str
-  }
-
-  async onScroll() {
-    // WIP
-    console.log("Scrolled!");
-
-    let newDocos = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(this.count), 5)
-
-    console.log(newDocos);
-
-    this.count = +newDocos[newDocos.length-1].index;
-    console.log(this.count)
-  }
-
+  // Get the tag or category selected based on the URL.
   async getSelectedParams() {
     let href = document.location.href;
     href = href.substring(href.lastIndexOf("/")+1, href.length);
@@ -127,12 +52,68 @@ export class DocumentaryListComponent implements OnInit {
     href = href.split('%28').join('(');
     href = href.split('%29').join(')');
     this.selected = href;
-    // Auto selects Health.
     if(this.selected === 'documentariesList') {
       this.changeSelection("Health");
     }
   }
 
+  // returns all categories from the categories table in Firebase.
+  async getCategoryList() {
+    this.allCategories = await this.categoryService.getAllCategories();
+  }
+
+  // For every category, get all the tags and put them into the map.
+  async buildSideBarOptions() {
+    for (let i = 0; i < this.allCategories.length; i++) {
+      this.sideBarOptions.set(this.allCategories[i].name, await this.tagService.getTagByCategory(this.allCategories[i].name));
+    }
+    this.tagList = Array.from(this.sideBarOptions.values());
+  }
+
+  // Compile list of docos to show in the right based on tag/category selected
+  async listDocos() {
+    this.tagList.forEach(tags => {
+      tags.forEach(async tag => {
+          if(tag.name == this.selected) {
+          this.isCategory = false;
+          let tag = await this.tagService.getTagByName(this.selected);
+          let category = await this.categoryService.getCategoryByName(tag[0].categoryName);
+          this.prefix = category[0].prefix;
+          this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
+        }
+      });
+    });
+    this.allCategories.forEach(async category => {
+      if(category.name == this.selected) {
+        this.isCategory = true;
+        let category = await this.categoryService.getCategoryByName(this.selected);
+        this.prefix = category[0].prefix;
+        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
+        this.count += 5;
+      }
+    });
+  }
+
+  // Convert '1' to '00001' (the format of a doco's index)
+  numberFormat(num: number) {
+    var str = "" + num
+    var pad = "00000"
+    return pad.substring(0, pad.length - str.length) + str
+  }
+
+  // When the user scrolls, loads the next part of the list (WIP).
+  async onScroll() {
+    //console.log("Scrolled!");
+
+    let newDocos = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(this.count), 5)
+
+    //console.log(newDocos);
+
+    //this.count = +newDocos[newDocos.length-1].index;
+    //console.log(this.count)
+  }
+
+  // Change what is selected on the sidebar menu
   changeSelection(paramName) { 
     let nav = "/documentariesList/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
     this.router.navigateByUrl(nav);

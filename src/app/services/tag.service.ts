@@ -28,4 +28,10 @@ export class TagService {
       this.db.collection('tags', ref => ref.where('categoryName', '==', categoryName)).valueChanges().subscribe(tags => resolve(tags))
     })
   }
+
+  getTagByName(tagName: string) {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('tags', ref => ref.where('name', '==', tagName)).valueChanges().subscribe(tags => resolve(tags))
+    })
+  }
 }
