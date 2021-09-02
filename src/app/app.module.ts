@@ -13,15 +13,22 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AboutComponent } from './pages/about/about.component';
 
 // Modules
+import { SecurityContext } from '@angular/core';
 import { UiModule } from './ui/ui.module';
 import { HomeModule } from './pages/home/home.module';
 import { DocumentaryListModule } from './pages/documentary-list/documentary-list.module';
 import { ContactModule } from './pages/contact/contact.module';
+import { SummaryComponent } from './summary/summary.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,10 @@ import { ContactModule } from './pages/contact/contact.module';
     // Firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    // Markdown
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE })
   ],
   providers: [],
   bootstrap: [AppComponent]

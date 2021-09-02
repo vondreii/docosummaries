@@ -6,7 +6,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
-
 @NgModule({
   declarations: [
     DocumentaryListComponent
