@@ -20,6 +20,19 @@ export class DocumentaryService {
     })
   }
 
+  // Move these
+  getTag(tagName: string) {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('tags', ref => ref.where('name', '==', tagName)).valueChanges().subscribe(tags => resolve(tags))
+    })
+  }
+
+  getCategory(categoryName: string) {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('categories', ref => ref.where('name', '==', categoryName)).valueChanges().subscribe(categories => resolve(categories))
+    })
+  }
+
   // getDocumentaryByTag(tagName: string) {
   //   return new Promise<any>((resolve)=> {
   //     this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName).orderBy('index')).valueChanges().subscribe(tags => resolve(tags))

@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 export class DocumentaryListComponent implements OnInit {
 
   count = 0;
+  prefix: string = "C01";
 
   // Selected tag and category based on URL
   selected: string;
@@ -75,29 +76,34 @@ export class DocumentaryListComponent implements OnInit {
     this.tagList = Array.from(this.sideBarOptions.values());
   }
 
-  listDocos() {
-    // Find if selected is a tag or a category
+  async listDocos() {
+    // Find tag is selected in sidebar
     this.tagList.forEach(tags => {
       tags.forEach(async tag => {
           if(tag.name == this.selected) {
           this.isCategory = false;
+          let tag = await this.docoService.getTag(this.selected);
+          let category = await this.docoService.getCategory(tag[0].categoryName);
+          this.prefix = category[0].prefix;
           this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
         }
       });
     });
+    // If category is selected in sidebar
     this.allCategories.forEach(async category => {
       if(category.name == this.selected) {
         this.isCategory = true;
+        let category = await this.docoService.getCategory(this.selected);
+        this.prefix = category[0].prefix;
         this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
         this.count += 5;
-        console.log(this.docoList);
       }
     });
   }
 
   numberFormat(num: number) {
     var str = "" + num
-    var pad = "00"
+    var pad = "00000"
     return pad.substring(0, pad.length - str.length) + str
   }
 
@@ -106,6 +112,7 @@ export class DocumentaryListComponent implements OnInit {
     console.log("Scrolled!");
 
     let newDocos = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(this.count), 5)
+
     console.log(newDocos);
 
     this.count = +newDocos[newDocos.length-1].index;
