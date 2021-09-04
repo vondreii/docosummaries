@@ -12,7 +12,7 @@
 
 .selectedLink {
   text-decoration: none;
-  color: #ff960d;
+  color: #ff960d !important;
 }
 
 h2 .sidebarLink {
@@ -48,4 +48,102 @@ h1 {
   text-decoration: none;
   float: right;
   text-align: right;
+}
+
+/* Test ------------------------------------ */
+/* The sidebar menu */
+@media only screen and (min-width: 801px) {
+  .sidebar-desktop {
+    display: block;
+    padding-top: 20px;
+    padding-right: 48px;
+  }
+  .sidebar-mobile,
+  .openbtn {
+    display: none;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .docoList {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  h1 {
+    font-size: 18pt;
+  }
+  .sidebar-desktop {
+    display: none;
+    width: 500px;
+  }
+  .sidebar-mobile,
+  .openbtn {
+    display: block;
+    border-radius: 10px;
+  }
+  .category-mobile {
+    font-size: 16pt !important;
+  }
+  .tag-mobile {
+    font-size: 13pt !important;
+    margin-left: 30px;
+  }
+}
+
+.sidebar-mobile::-webkit-scrollbar {
+  width: 1em;
+}
+
+/* The sidebar menu */
+.sidebar-mobile {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  transition: 0.5s;
+  border-right: 1px solid #13101b;
+}
+
+/* The sidebar links */
+.sidebar-mobile a {
+  padding: 8px 8px 8px 40px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar-mobile a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar-mobile .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: orange;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #ff960d;
 }

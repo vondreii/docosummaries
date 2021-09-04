@@ -117,5 +117,20 @@ export class DocumentaryListComponent implements OnInit {
   changeSelection(paramName) { 
     let nav = "/documentariesList/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
     this.router.navigateByUrl(nav);
+    document.getElementById("sidebar-mobile").style.width = "0";
+    
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+
+  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+  openNav() {
+    document.getElementById("sidebar-mobile").style.width = "300px";
+  }
+
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  closeNav() {
+    document.getElementById("sidebar-mobile").style.width = "0";
   }
 }

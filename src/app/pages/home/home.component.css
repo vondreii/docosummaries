@@ -37,13 +37,13 @@ h1 {
 }
 @media only screen and (max-width: 600px) {
   h1 {
-    font-size: 20pt;
+    font-size: 25pt;
     font-weight: bold;
   }
 }
 @media only screen and (max-width: 300px) {
   h1 {
-    font-size: 14pt;
+    font-size: 18pt;
     font-weight: bold;
   }
 }
