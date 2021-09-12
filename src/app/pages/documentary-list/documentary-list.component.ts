@@ -21,6 +21,8 @@ export class DocumentaryListComponent implements OnInit {
   docoList: any;
   isCategory: boolean = true;
   navlink: string;
+  type: string;
+  previousSelect: string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -75,19 +77,26 @@ export class DocumentaryListComponent implements OnInit {
     this.tagList.forEach(tags => {
       tags.forEach(async tag => {
           if(tag.name == this.selected) {
+          console.log("Is tag");
           this.isCategory = false;
           let tag = await this.tagService.getTagByName(this.selected);
           let category = await this.categoryService.getCategoryByName(tag[0].categoryName);
           this.prefix = category[0].prefix;
           this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
+          console.log(this.docoList);
+          this.previousSelect = this.selected;
         }
       });
     });
     this.allCategories.forEach(async category => {
       if(category.name == this.selected) {
+          console.log("Is category");
         this.isCategory = true;
         let category = await this.categoryService.getCategoryByName(this.selected);
         this.prefix = category[0].prefix;
+        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
+        // Some sort of issue with firebase. Need to reset the list somehow because the firebase query is returning the previous result (firebase bug?) 
+        this.docoList = await this.docoService.getDocumentaryByTag("");
         this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
         this.count += 5;
       }
