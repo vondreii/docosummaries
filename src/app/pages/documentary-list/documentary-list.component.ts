@@ -24,6 +24,10 @@ export class DocumentaryListComponent implements OnInit {
   type: string;
   previousSelect: string = "";
 
+  // Workaround for Firebase bug
+  firstLoaded: boolean;
+  previouslyTag: boolean
+
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
@@ -43,6 +47,7 @@ export class DocumentaryListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.firstLoaded = true;
   }
 
   // Get the tag or category selected based on the URL.
@@ -74,6 +79,7 @@ export class DocumentaryListComponent implements OnInit {
 
   // Compile list of docos to show in the right based on tag/category selected
   async listDocos() {
+    this.count = 0;
     this.tagList.forEach(tags => {
       tags.forEach(async tag => {
           if(tag.name == this.selected) {
@@ -82,22 +88,25 @@ export class DocumentaryListComponent implements OnInit {
           let tag = await this.tagService.getTagByName(this.selected);
           let category = await this.categoryService.getCategoryByName(tag[0].categoryName);
           this.prefix = category[0].prefix;
-          this.docoList = await this.docoService.getDocumentaryByTag(this.selected);
-          console.log(this.docoList);
-          this.previousSelect = this.selected;
+          this.docoList = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5);
+          this.previouslyTag = true;
         }
       });
     });
     this.allCategories.forEach(async category => {
       if(category.name == this.selected) {
-          console.log("Is category");
+        console.log("Is category");
         this.isCategory = true;
         let category = await this.categoryService.getCategoryByName(this.selected);
         this.prefix = category[0].prefix;
-        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
-        // Some sort of issue with firebase. Need to reset the list somehow because the firebase query is returning the previous result (firebase bug?) 
-        this.docoList = await this.docoService.getDocumentaryByTag("");
-        this.docoList = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(0), 5);
+        // Some sort of issue with firebase. Need to reset the list somehow because the firebase query is returning the previous result (firebase bug?)
+        if(this.firstLoaded && this.previouslyTag) {
+          this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
+          this.docoList = await this.docoService.getDocumentaryByTag("");
+          this.firstLoaded = false;
+          this.previouslyTag = false;
+        }
+        this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
         this.count += 5;
       }
     });
@@ -112,14 +121,28 @@ export class DocumentaryListComponent implements OnInit {
 
   // When the user scrolls, loads the next part of the list (WIP).
   async onScroll() {
-    //console.log("Scrolled!");
+    let newDocos = []
+    if(this.isCategory) {
+      newDocos = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(this.count), 5)
+    }
+    else {
+      newDocos = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5)
+    }
+    if(newDocos.length > 0) {
+      newDocos.forEach(newDoco => {
+        if(!this.exists(newDoco.index)) {
+          this.docoList.push(newDoco);
+        }
+      });
+      this.count = +newDocos[newDocos.length-1].index;
+    }
+  }
 
-    let newDocos = await this.docoService.getDocumentaryByCategory(this.selected, this.numberFormat(this.count), 5)
-
-    //console.log(newDocos);
-
-    //this.count = +newDocos[newDocos.length-1].index;
-    //console.log(this.count)
+  // Checks if a record already exists in the doco list being displayed on the page
+  exists(index) {
+    return this.docoList.some(function(el) {
+      return el.index === index;
+    }); 
   }
 
   // Change what is selected on the sidebar menu
@@ -132,13 +155,12 @@ export class DocumentaryListComponent implements OnInit {
     document.documentElement.scrollTop = 0;
   }
 
-
-  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+  // Set the width of the sidebar to 250px and the left margin of the page content to 250px
   openNav() {
     document.getElementById("sidebar-mobile").style.width = "300px";
   }
 
-  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  // Set the width of the sidebar to 0 and the left margin of the page content to 0
   closeNav() {
     document.getElementById("sidebar-mobile").style.width = "0";
   }

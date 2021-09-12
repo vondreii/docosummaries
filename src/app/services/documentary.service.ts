@@ -14,9 +14,22 @@ export class DocumentaryService {
     })
   }
   
-  getDocumentaryByCategory(categoryName: string, start: string, limit: number) {
+  getDocumentaryByCategory(categoryName: string) {
     return new Promise<any>((resolve)=> {
       this.db.collection('documentaries', ref => ref.where('categoryName', '==', categoryName)).valueChanges().subscribe(doco => resolve(doco))
+    })
+  }
+
+  getDocumentaryByTagLimited(tagName: string, start: string, limit: number) {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName).orderBy('index').startAt(start).limit(limit)).valueChanges().subscribe(doco => resolve(doco))
+    })
+  }
+
+  getDocumentaryByCategoryLimited(categoryName: string, start: string, limit: number) {
+    
+     return new Promise<any>((resolve)=> {
+      this.db.collection('documentaries', ref => ref.where('categoryName', '==', categoryName).orderBy('index').startAt(start).limit(limit)).valueChanges().subscribe(category => resolve(category))
     })
   }
 
