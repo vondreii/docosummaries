@@ -1,10 +1,12 @@
 <div class="content words">
   <h2 class="title">{{currentDoco.name}}</h2>
   <br>
-  <h5 class="description">{{currentDoco.description}}</h5>
-  <br>
   <app-tag *ngIf="currentTag" [paramName]="currentTag" style="text-align: left"></app-tag>
   <br>
+  <!-- <div class="videoWrapper">
+    <iframe width="560" height="349" src='{{videoTest}}' frameborder="0"
+      allowfullscreen></iframe>
+  </div> -->
   <br>
   <div markdown [src]="post"></div>
   <br>

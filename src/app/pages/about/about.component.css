@@ -1,0 +1,36 @@
+.about {
+  color: white;
+  line-height: 2;
+  letter-spacing: 1px;
+  text-align: center;
+}
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
+  .about {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .about {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
+/* Headings */
+h1 {
+  font-size: 35pt;
+  font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 20pt;
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width: 300px) {
+  h1 {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+}

@@ -2,6 +2,10 @@
   font-weight: bold;
 }
 
+.content {
+  padding: 24px 80px;
+}
+
 .description {
   line-height: 1.5;
 }
@@ -39,4 +43,17 @@ h5 {
 :host ::ng-deep .words p a:hover {
   color: #ff960d;
   text-decoration: none;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

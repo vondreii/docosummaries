@@ -16,15 +16,11 @@
 }
 
 h2 .sidebarLink {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
+  font-size: 24px;
 }
 
 p .sidebarLink {
   font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
 }
 
 hr {
@@ -50,7 +46,6 @@ h1 {
   text-align: right;
 }
 
-/* Test ------------------------------------ */
 /* The sidebar menu */
 @media only screen and (min-width: 801px) {
   .sidebar-desktop {

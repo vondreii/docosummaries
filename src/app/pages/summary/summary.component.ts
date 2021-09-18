@@ -16,6 +16,8 @@ export class SummaryComponent implements OnInit {
   currentDoco: any = new Object();
   currentTag: string = "";
 
+  // videoTest="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1";
+
   constructor(
     private route: ActivatedRoute,
     private docoService: DocumentaryService,
