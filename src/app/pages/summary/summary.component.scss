@@ -5,6 +5,18 @@
 .content {
   padding: 24px 80px;
 }
+@media only screen and (max-width: 1360px) and (min-width: 801px) {
+  .outer-container,
+  .content {
+    padding: 24px 48px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .outer-container,
+  .content {
+    padding: 16px 8px;
+  }
+}
 
 .description {
   line-height: 1.5;

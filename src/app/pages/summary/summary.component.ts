@@ -16,7 +16,7 @@ export class SummaryComponent implements OnInit {
   currentDoco: any = new Object();
   currentTag: string = "";
 
-  // videoTest="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1";
+  videoTest="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1";
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +26,8 @@ export class SummaryComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.showArticle();
       this.getCurrentDoco();
-
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     });
   }
 
