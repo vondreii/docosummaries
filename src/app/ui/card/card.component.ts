@@ -10,7 +10,10 @@ export class CardComponent implements OnInit {
   @Input() categoryName: string;
   @Input() categoryDescription: string;
   @Input() categoryLink: string;
+  @Input() categoryImg: string;
   navLink = "";
+
+  //categoryImg = "../../../assets/images/cards-dark.jpg";
 
   constructor() { }
 

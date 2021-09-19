@@ -155,13 +155,27 @@ export class DocumentaryListComponent implements OnInit {
     document.documentElement.scrollTop = 0;
   }
 
-  // Set the width of the sidebar to 250px and the left margin of the page content to 250px
+  // Sets the width of the sidebar when it is opened
   openNav() {
     document.getElementById("sidebar-mobile").style.width = "300px";
+
+    var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
+    console.log(tagLinks);
+
+    tagLinks.forEach(element => {
+      element.style.display = "block";
+    });
   }
 
-  // Set the width of the sidebar to 0 and the left margin of the page content to 0
+  // Closes the sidebar and hides the text
   closeNav() {
+    var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
+    console.log(tagLinks);
+
+    tagLinks.forEach(element => {
+      element.style.display = "none";
+    });
+
     document.getElementById("sidebar-mobile").style.width = "0";
   }
 }

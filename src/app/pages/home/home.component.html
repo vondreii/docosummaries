@@ -7,28 +7,57 @@
   <p class="pb-5">
     A place where you can learn about new documentaries and read their summaries. Search for quick summaries or videos from different categories!
   </p>
-  <app-searchbar class="pb-5"></app-searchbar>
+  <app-searchbar class="pb-3"></app-searchbar>
   <app-button [navLink]="documentariesLink">All Documentaries</app-button>
 </div>
-<!-- Browse By Tags -->
-<div class="browseByTags pb-3 mb-5">
-  <h2 class="pb-3 pt-5">Browse By <span>Tags</span></h2>
-  <div *ngFor="let tag of tagsList | slice:0:6; let i=index"  role="listitem">
-    <div class="browseByTags pb-3 mb-2">
-      <app-tag [paramName]="tag.name"></app-tag>
+<!-- Browse By Tags - Desktop -->
+<div class="browseByTags-desktop">
+  <div class="browseByTags pb-3 mb-3">
+    <h2 class="pb-3 pt-5">Browse By <span>Tags</span></h2>
+    <div *ngFor="let tag of tagsList | slice:1:4; let i=index" style="display: inline-flex;" role="listitem">
+      <div class="browseByTags pb-3 mb-2 mr-4">
+        <app-tag [paramName]="tag.name"></app-tag>
+      </div>
     </div>
+    <br>
+    <div *ngFor="let tag of tagsList | slice:4:6; let i=index" style="display: inline-flex;" role="listitem">
+      <div class="browseByTags pb-3 mb-2 mr-4">
+        <app-tag [paramName]="tag.name"></app-tag>
+      </div>
+    </div>
+    <br>
+    <div *ngFor="let tag of tagsList | slice:7:8; let i=index" style="display: inline-flex;" role="listitem">
+      <div class="browseByTags pb-3 mb-2 mr-4">
+        <app-tag [paramName]="tag.name"></app-tag>
+      </div>
+    </div>
+    <br>
+    <a class="darkGreyText" routerLink="/documentariesList">View All</a>
   </div>
-  <a class="darkGreyText" routerLink="/documentariesList">View All</a>
+</div>
+<!-- Browse By Tags - Mobile -->
+<div class="browseByTags-mobile">
+  <div class="browseByTags pb-3 mb-3">
+    <h2 class="pb-3 pt-5">Browse By <span>Tags</span></h2>
+    <div *ngFor="let tag of tagsList | slice:10:15; let i=index" role="listitem">
+      <div class="browseByTags pb-3 mb-2">
+        <app-tag [paramName]="tag.name"></app-tag>
+      </div>
+    </div>
+    <br>
+    <a class="darkGreyText" routerLink="/documentariesList">View All</a>
+  </div>
 </div>
 <!-- Browse By Categories -->
 <div class="browseByCategories pb-3 mb-5">
   <h2 class="pb-5 pt-5">Browse By <span>Categories</span></h2>
   <div class="row">
-    <div class="column" *ngFor="let category of categoryList | slice:0:3; let i=index"  role="listitem">
+    <div class="column pb-4" *ngFor="let category of categoryList | slice:0:9; let i=index"  role="listitem">
       <app-card 
         [categoryName]="category.name" 
         [categoryDescription]="category.categoryDescription" 
-        [categoryLink]="category.name">
+        [categoryLink]="category.name"
+        [categoryImg]="category.image">
       </app-card>
     </div>
   </div>

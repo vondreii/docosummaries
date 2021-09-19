@@ -2,10 +2,6 @@
   display: flex;
 }
 
-.test {
-  width: 500px;
-}
-
 .docoList p {
   color: white;
 }
@@ -47,18 +43,19 @@ h1 {
 }
 
 /* The sidebar menu */
-@media only screen and (min-width: 801px) {
+@media only screen and (min-width: 701px) {
   .sidebar-desktop {
     display: block;
     padding-top: 20px;
-    padding-right: 48px;
+    padding-right: 20px;
+    width: 450px;
   }
   .sidebar-mobile,
   .openbtn {
     display: none;
   }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
   .docoList {
     padding-left: 8px;
     padding-right: 8px;
@@ -141,4 +138,14 @@ h1 {
 
 .openbtn:hover {
   background-color: #ff960d;
+}
+
+.summariesWidth {
+  width: 800px;
+}
+
+@media only screen and (max-width: 900px) {
+  .summariesWidth {
+    width: 100%;
+  }
 }

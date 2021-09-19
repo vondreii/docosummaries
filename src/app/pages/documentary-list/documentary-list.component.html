@@ -1,31 +1,28 @@
-
 <div class="docoList content">
+  <!-- Sidebar Mobile -->
   <div id="sidebar-mobile" class="sidebar-mobile">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <div *ngFor="let tags of tagList">
       <!-- Selected Category -->
       <ng-container *ngIf="selected == tags[0].categoryName">
-        <a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink sidebarLink category-mobile">{{
-            tags[0].categoryName }}</a>
+        <a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink sidebarLink category-mobile">{{tags[0].categoryName}}</a>
       </ng-container>
       <!-- Category -->
       <ng-container *ngIf="selected != tags[0].categoryName">
-        <a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink category-mobile">{{
-            tags[0].categoryName }}</a>
+        <a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink category-mobile">{{tags[0].categoryName}}</a>
       </ng-container>
+      <!-- Selected Tag -->
       <div *ngFor="let tag of tags">
-        <!-- Selected Tag -->
         <ng-container *ngIf="selected == tag.name">
           <a routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink sidebarLink pl-3 tag-mobile">#{{tag.name}}</a>
-          
         </ng-container>
         <ng-container *ngIf="selected != tag.name">
           <a routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText sidebarLink pl-3 tag-mobile">#{{tag.name}}</a>
-          
         </ng-container>
       </div>
     </div>
   </div>
+  <!-- Sidebar Desktop -->
   <div class="sidebar-desktop">
     <div *ngFor="let tags of tagList">
       <!-- Selected Category -->
@@ -38,8 +35,8 @@
         <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink">{{
             tags[0].categoryName }}</a></h2>
       </ng-container>
+      <!-- Selected Tag -->
       <div *ngFor="let tag of tags">
-        <!-- Selected Tag -->
         <ng-container *ngIf="selected == tag.name">
           <p><a routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink sidebarLink pl-3">#{{tag.name}}</a></p>
         </ng-container>
@@ -49,7 +46,8 @@
       </div>
     </div>
   </div>
-  <div style="width: 800px">
+  <!-- Summaries List -->
+  <div class="summariesWidth">
     <button class="openbtn" (click)="openNav()">Filter</button>
     <br>
     <h1>{{selected}} Documentaries</h1>
@@ -58,21 +56,11 @@
         <ng-container *ngFor="let doco of docoList">
           <h4 class="pt-5 pb-2 title">{{doco.name}}</h4>
           <p class="desc">{{doco.description}}</p>
-          <!-- <p class="desc">{{doco.index}}</p>
-          <p class="desc">{{prefix}}</p> -->
-          <a class="readMore pb-5" routerLink="/documentariesList/summary/{{prefix}}-{{doco.index}}">Learn More ></a>
+          <a class="readMore pb-5" routerLink="/documentariesList/summary/{{prefix}}-{{doco.index}}">Read More ></a>
           <br>
           <hr>
         </ng-container>
         <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="20" (scrolled)="onScroll()"></div>
-        <!-- <div class="row pb-5 mt-5">
-          <br><br>
-          <h1 id="loading">Loading</h1>
-           <div class="col-md-12 p-5">
-            <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="white" type="ball-pulse-sync" [fullScreen]="false"></ngx-spinner>
-          </div> 
-        </div> -->
-        <!-- <div style="color:white">End of DB</div> -->
       </ng-container>
       <ng-container *ngIf="docoList === undefined || docoList.length === 0">
           <p class="pt-5">There are no documentaries available.</p>
@@ -80,6 +68,3 @@
     </div>
   </div>
 </div>
-
-
-

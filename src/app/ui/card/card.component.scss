@@ -1,8 +1,7 @@
 /* Style the counter cards */
 .categoryCard {
-  background-image:url('../../../assets/images/cards-dark.jpg');
-  background-repeat:no-repeat;
-  background-size:cover;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
@@ -13,5 +12,13 @@
 }
 .categoryCard h6 {
   background: none;
-  font-weight:bold
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  text-decoration: none;
+  color: orange;
 }

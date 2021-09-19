@@ -89,7 +89,7 @@ span {
   /* background-image: url('../../assets/images/cards.jpg'); */
   text-align: center;
   width: 33%;
-  padding: 0 50px;
+  padding: 0 10px;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
@@ -98,5 +98,22 @@ span {
     width: 100%;
     display: block;
     margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .browseByTags-mobile {
+    display: block;
+  }
+  .browseByTags-desktop {
+    display: none;
+  }
+}
+@media only screen and (min-width: 701px) {
+  .browseByTags-mobile {
+    display: none;
+  }
+  .browseByTags-desktop {
+    display: block;
   }
 }

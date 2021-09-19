@@ -1,5 +1,5 @@
-<div class="categoryCard">
-  <h6 class="pt-3">{{categoryName}}</h6>
+<div class="categoryCard" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{categoryImg}})">
+  <h6 class="pt-3"><a [routerLink]="[navLink]">{{categoryLink}}</a></h6>
   <p>{{categoryDescription}}</p>
-  <a [routerLink]="[navLink]">{{categoryLink}}</a>
 </div>
+
