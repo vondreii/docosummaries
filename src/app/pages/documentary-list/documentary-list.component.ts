@@ -75,6 +75,7 @@ export class DocumentaryListComponent implements OnInit {
       this.sideBarOptions.set(this.allCategories[i].name, await this.tagService.getTagByCategory(this.allCategories[i].name));
     }
     this.tagList = Array.from(this.sideBarOptions.values());
+    console.log(this.tagList)
   }
 
   // Compile list of docos to show in the right based on tag/category selected
@@ -146,36 +147,36 @@ export class DocumentaryListComponent implements OnInit {
   }
 
   // Change what is selected on the sidebar menu
-  changeSelection(paramName) { 
+  async changeSelection(paramName) { 
+    this.closeNav();
+    await new Promise(resolve => setTimeout(resolve, 300));
     let nav = "/documentariesList/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
     this.router.navigateByUrl(nav);
-    document.getElementById("sidebar-mobile").style.width = "0";
     
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
 
   // Sets the width of the sidebar when it is opened
-  openNav() {
+  async openNav() {
+    this.toggleTagVisibility("none");
     document.getElementById("sidebar-mobile").style.width = "300px";
-
-    var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
-    console.log(tagLinks);
-
-    tagLinks.forEach(element => {
-      element.style.display = "block";
-    });
+    await new Promise(resolve => setTimeout(resolve, 500));
+    this.toggleTagVisibility("block");
   }
 
   // Closes the sidebar and hides the text
-  closeNav() {
-    var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
-    console.log(tagLinks);
-
-    tagLinks.forEach(element => {
-      element.style.display = "none";
-    });
-
+  async closeNav() {
+    this.toggleTagVisibility("none");
+    await new Promise(resolve => setTimeout(resolve, 10));
     document.getElementById("sidebar-mobile").style.width = "0";
+  }
+
+  // Displays or removes tags in the column when collapsing sidebar on mobile
+  toggleTagVisibility(display: string) {
+    var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
+    tagLinks.forEach(element => {
+      element.style.display = display;
+    });
   }
 }

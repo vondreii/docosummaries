@@ -11,12 +11,44 @@
   color: #ff960d !important;
 }
 
-h2 .sidebarLink {
-  font-size: 24px;
+summary {
+  color: orange;
 }
 
-p .sidebarLink {
+summary a {
+  color: white;
+  font-size: 24px;
+  margin-right: 10px;
+  line-height: 2;
+}
+
+@media only screen and (max-width: 700px) {
+  summary a {
+    margin-right: 6px;
+  }
+  summary {
+    color: #818181;
+  }
+}
+
+details div a {
   font-size: 16px;
+  padding-left: 30px !important;
+  line-height: 2;
+}
+
+details > summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: " ►";
+}
+details[open] summary:after {
+  content: " ▼";
 }
 
 hr {
@@ -103,18 +135,12 @@ h1 {
 }
 
 /* The sidebar links */
-.sidebar-mobile a {
-  padding: 8px 8px 8px 40px;
+.sidebar-mobile details a {
+  padding: 8px 0px 8px 40px;
   text-decoration: none;
   font-size: 18px;
   color: #818181;
-  display: block;
   transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidebar-mobile a:hover {
-  color: #f1f1f1;
 }
 
 /* Position and style the close button (top right corner) */
@@ -124,6 +150,7 @@ h1 {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  color: #818181;
 }
 
 /* The button used to open the sidebar */
@@ -148,4 +175,11 @@ h1 {
   .summariesWidth {
     width: 100%;
   }
+}
+
+summary::-webkit-details-marker {
+  color: blue;
+}
+summary:focus {
+  outline-style: none;
 }

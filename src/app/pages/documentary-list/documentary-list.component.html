@@ -3,47 +3,43 @@
   <div id="sidebar-mobile" class="sidebar-mobile">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <div *ngFor="let tags of tagList">
-      <!-- Selected Category -->
-      <ng-container *ngIf="selected == tags[0].categoryName">
-        <a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink sidebarLink category-mobile">{{tags[0].categoryName}}</a>
-      </ng-container>
-      <!-- Category -->
-      <ng-container *ngIf="selected != tags[0].categoryName">
-        <a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink category-mobile">{{tags[0].categoryName}}</a>
-      </ng-container>
-      <!-- Selected Tag -->
-      <div *ngFor="let tag of tags">
-        <ng-container *ngIf="selected == tag.name">
-          <a routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink sidebarLink pl-3 tag-mobile">#{{tag.name}}</a>
-        </ng-container>
-        <ng-container *ngIf="selected != tag.name">
-          <a routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText sidebarLink pl-3 tag-mobile">#{{tag.name}}</a>
-        </ng-container>
-      </div>
+      <details open>
+        <summary class="category-mobile">
+          <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+            class="selectedLink sidebarLink">
+            {{tags[0].categoryName }}</a>
+          <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+            class="lightGreyText sidebarLink">
+            {{tags[0].categoryName }}</a>
+        </summary>
+        <div *ngFor="let tag of tags" class="tag-mobile">
+          <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+            class="selectedLink sidebarLink pl-3">
+            #{{tag.name}}</a>
+          <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+            class="lightGreyText sidebarLink pl-3">
+            #{{tag.name}}</a>
+        </div>
+      </details>
     </div>
   </div>
   <!-- Sidebar Desktop -->
   <div class="sidebar-desktop">
     <div *ngFor="let tags of tagList">
-      <!-- Selected Category -->
-      <ng-container *ngIf="selected == tags[0].categoryName">
-        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink sidebarLink">{{
-            tags[0].categoryName }}</a></h2>
-      </ng-container>
-      <!-- Category -->
-      <ng-container *ngIf="selected != tags[0].categoryName">
-        <h2><a routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink">{{
-            tags[0].categoryName }}</a></h2>
-      </ng-container>
-      <!-- Selected Tag -->
-      <div *ngFor="let tag of tags">
-        <ng-container *ngIf="selected == tag.name">
-          <p><a routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink sidebarLink pl-3">#{{tag.name}}</a></p>
-        </ng-container>
-        <ng-container *ngIf="selected != tag.name">
-          <p><a routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText sidebarLink pl-3">#{{tag.name}}</a></p>
-        </ng-container>
-      </div>
+      <details open>
+        <summary>
+            <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink sidebarLink">
+              {{tags[0].categoryName }}</a>
+            <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink">
+              {{tags[0].categoryName }}</a>
+        </summary>
+        <div *ngFor="let tag of tags">
+            <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink sidebarLink pl-3">
+              #{{tag.name}}</a>
+            <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText sidebarLink pl-3">
+              #{{tag.name}}</a>
+        </div>
+      </details>
     </div>
   </div>
   <!-- Summaries List -->
