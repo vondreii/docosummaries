@@ -56,7 +56,7 @@
           <br>
           <hr>
         </ng-container>
-        <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="20" (scrolled)="onScroll()"></div>
+        <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="5" (scrolled)="onScroll()"></div>
       </ng-container>
       <ng-container *ngIf="docoList === undefined || docoList.length === 0">
           <p class="pt-5">There are no documentaries available.</p>

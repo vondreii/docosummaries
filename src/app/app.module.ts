@@ -20,7 +20,7 @@ import { DocumentaryListModule } from './pages/documentary-list/documentary-list
 import { ContactModule } from './pages/contact/contact.module';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { SummaryComponent } from './pages/summary/summary.component';
+import { SafePipe, SummaryComponent } from './pages/summary/summary.component';
 
 
 
@@ -28,7 +28,8 @@ import { SummaryComponent } from './pages/summary/summary.component';
   declarations: [
     AppComponent,
     AboutComponent,
-    SummaryComponent
+    SummaryComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

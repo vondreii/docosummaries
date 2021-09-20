@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { DocumentaryService } from 'src/app/services/documentary.service';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-summary',
@@ -54,6 +56,18 @@ export class SummaryComponent implements OnInit {
         this.currentTag = docosList[i].tagName;
       }
     }
+  }
+
+}
+
+@Pipe({
+  name: 'safe'
+})
+export class SafePipe implements PipeTransform {
+
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }

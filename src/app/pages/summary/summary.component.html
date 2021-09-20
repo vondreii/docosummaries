@@ -3,10 +3,10 @@
   <br>
   <app-tag *ngIf="currentTag" [paramName]="currentTag" style="text-align: left"></app-tag>
   <br>
-  <!-- <div class="videoWrapper">
-    <iframe width="560" height="349" src='{{videoTest}}' frameborder="0"
+  <div class="videoWrapper" *ngIf="currentDoco.embed">
+    <iframe *ngIf="currentDoco.embed" width="560" height="349" [src]="currentDoco.embed | safe" frameborder="0"
       allowfullscreen></iframe>
-  </div> -->
+  </div>
   <br>
   <div markdown [src]="post"></div>
   <br>
