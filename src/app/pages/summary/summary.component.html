@@ -1,13 +1,34 @@
 <div class="content words">
   <h2 class="title">{{currentDoco.name}}</h2>
-  <br>
-  <app-tag *ngIf="currentTag" [paramName]="currentTag" style="text-align: left"></app-tag>
-  <br>
-  <div class="videoWrapper" *ngIf="currentDoco.embed">
+  <p style="font-weight:lighter; color:darkgrey" class="title"><a routerLink="/documentariesList/{{currentTag.split(' ').join('-')}}">#{{currentTag}}</a></p>
+  <div class="videoWrapper" 
+    *ngIf="currentDoco.embed !== 'Netflix' && 
+           currentDoco.embed !== 'NA' &&
+           currentDoco.embed !== 'DisneyPlus'">
     <iframe *ngIf="currentDoco.embed" width="560" height="349" [src]="currentDoco.embed | safe" frameborder="0"
       allowfullscreen></iframe>
   </div>
+  <div *ngIf="currentDoco.embed === 'DisneyPlus'">
+    <div class="categoryCard"
+      style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{watchOnDisplayPlus}})">
+      <h3 class="pt-3"><a href="https://www.disneyplus.com/en-au" target="_blank">Watch on Disney+</a></h3>
+    </div>
+  </div>
+  <div *ngIf="currentDoco.embed === 'Netflix'">
+    <div class="categoryCard"
+      style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{watchOnNetflix}})">
+      <h3 class="pt-3"><a href="https://www.netflix.com/browse" target="_blank">Watch on Netflix</a></h3>
+    </div>
+  </div>
+  <div *ngIf="currentDoco.embed === 'NA'">
+    <div class="categoryCard"
+      style="background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url({{watchOnNetflix}})">
+      <h3 class="pt-3">Video Unavailable</h3>
+    </div>
+  </div>
   <br>
+  <!-- <app-tag *ngIf="currentTag" [paramName]="currentTag" style="text-align: left"></app-tag>
+  <br> -->
   <div markdown [src]="post"></div>
   <br>
   <hr style="border:1px solid grey">

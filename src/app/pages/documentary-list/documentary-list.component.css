@@ -22,6 +22,10 @@ summary a {
   line-height: 2;
 }
 
+summary a:hover {
+  color: orange;
+}
+
 @media only screen and (max-width: 700px) {
   summary a {
     margin-right: 6px;
@@ -177,9 +181,6 @@ h1 {
   }
 }
 
-summary::-webkit-details-marker {
-  color: blue;
-}
 summary:focus {
   outline-style: none;
 }

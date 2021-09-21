@@ -20,6 +20,9 @@ export class SummaryComponent implements OnInit {
 
   videoTest="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1";
 
+  watchOnNetflix="../../../assets/images/netflix.jpg";
+  watchOnDisplayPlus="../../../assets/images/displayPlus.jpg"
+
   constructor(
     private route: ActivatedRoute,
     private docoService: DocumentaryService,
