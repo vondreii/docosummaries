@@ -40,10 +40,6 @@ export class DocumentaryService {
   }
 
   // Move these
-  
-
-  
-
   // getDocumentaryByTag(tagName: string) {
   //   return new Promise<any>((resolve)=> {
   //     this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName).orderBy('index')).valueChanges().subscribe(tags => resolve(tags))

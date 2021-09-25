@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { TagService } from 'src/app/services/tag.service';
@@ -119,11 +119,12 @@ export class DocumentaryListComponent implements OnInit {
     return pad.substring(0, pad.length - str.length) + str
   }
 
-  // When the user scrolls, loads the next part of the list (WIP).
-  async onScroll() {
+  // onScroll Listener
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event){
     this.moreDocos();
-  }
+  } 
 
+  // When the user scrolls, loads the next part of the list
   async moreDocos() {
     let newDocos = []
     if(this.isCategory) {
