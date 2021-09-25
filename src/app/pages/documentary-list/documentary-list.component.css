@@ -57,6 +57,7 @@ details[open] summary:after {
 
 hr {
   border: 1px solid #747474;
+  /* width: 100%; */
 }
 
 h1 {
