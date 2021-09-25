@@ -75,3 +75,21 @@ span {
   padding: 10px 20px;
   border-radius: 10px;
 }
+
+/* Contact form */
+@media only screen and (min-width: 701px) {
+  .form-desktop {
+    display: block;
+  }
+  .form-mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .form-desktop {
+    display: none;
+  }
+  .form-mobile {
+    display: block;
+  }
+}

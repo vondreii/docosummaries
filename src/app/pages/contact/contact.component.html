@@ -4,7 +4,7 @@
   <p class="pb-5">
     Contact us if you have any questions or would like to give us any feedback or suggestions!
   </p>
-  <div class="formBackground p-5" style="border-radius: 10px">
+  <div class="form-desktop formBackground p-5" style="border-radius: 10px">
     <form action="https://formspree.io/f/xrgropnl" class="formBackground" method="POST" data-netlify="true">
       <div class="form-group" class="formBackground p-3">
         <input type="text" name="message" class="form-control inputPadding" id="message"
@@ -24,6 +24,28 @@
       </div>
       <input type="hidden" name="_next" value="/contact" />
     </form>
+  </div>
+  <div class="p-5">
+    <div class="form-mobile formBackground p-2" style="border-radius: 10px">
+      <form action="https://formspree.io/f/xrgropnl" class="formBackground" method="POST" data-netlify="true">
+        <div class="form-group" class="formBackground p-2">
+          <input type="text" name="message" class="form-control inputPadding" id="message" placeholder="NAME">
+        </div>
+        <div class="form-group" class="formBackground p-2">
+          <input type="email" class="form-control inputPadding" id="replyTo" name="_replyto" ngModel="reply"
+            aria-describedby="emailHelp" placeholder="EMAIL">
+        </div>
+        <div class="form-group" class="formBackground p-2">
+          <textarea name="message" style="height:200px" class="form-control inputPadding" id="message"
+            placeholder="MESSAGE"></textarea>
+        </div>
+        <div class="form-group" class="formBackground p-2">
+          <button type="reset" class="button reset"><b class="formBackground">RESET</b></button>
+          <button type="submit" class="button submit"><b style="background-color:orange">SUBMIT</b></button>
+        </div>
+        <input type="hidden" name="_next" value="/contact" />
+      </form>
+    </div>
   </div>
   <div class="p-5"></div>
 </div>
