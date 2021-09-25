@@ -16,7 +16,7 @@ export class SummaryComponent implements OnInit {
   index: string;
   prefix: string;
   currentDoco: any = new Object();
-  currentTag: string = "";
+  currentTags: [];
 
   videoTest="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1";
 
@@ -56,7 +56,7 @@ export class SummaryComponent implements OnInit {
     for(let i=0; i<docosList.length; i++) {
       if(docosList[i].categoryName === currentCategory[0].name) {
         this.currentDoco = docosList[i];
-        this.currentTag = docosList[i].tagName;
+        this.currentTags = docosList[i].tagName;
       }
     }
   }

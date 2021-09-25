@@ -10,7 +10,7 @@ export class DocumentaryService {
 
   getDocumentaryByTag(tagName: string) {
     return new Promise<any>((resolve)=> {
-      this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName)).valueChanges().subscribe(doco => resolve(doco))
+      this.db.collection('documentaries', ref => ref.where('tagName', 'array-contains', tagName)).valueChanges().subscribe(doco => resolve(doco))
     })
   }
   
@@ -22,7 +22,7 @@ export class DocumentaryService {
 
   getDocumentaryByTagLimited(tagName: string, start: string, limit: number) {
     return new Promise<any>((resolve)=> {
-      this.db.collection('documentaries', ref => ref.where('tagName', '==', tagName).orderBy('index').startAt(start).limit(limit)).valueChanges().subscribe(doco => resolve(doco))
+      this.db.collection('documentaries', ref => ref.where('tagName', 'array-contains', tagName).orderBy('index').startAt(start).limit(limit)).valueChanges().subscribe(doco => resolve(doco))
     })
   }
 

@@ -24,10 +24,6 @@ export class DocumentaryListComponent implements OnInit {
   type: string;
   previousSelect: string = "";
 
-  // Workaround for Firebase bug
-  firstLoaded: boolean;
-  previouslyTag: boolean
-
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
@@ -47,7 +43,6 @@ export class DocumentaryListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.firstLoaded = true;
   }
 
   // Get the tag or category selected based on the URL.
@@ -75,7 +70,6 @@ export class DocumentaryListComponent implements OnInit {
       this.sideBarOptions.set(this.allCategories[i].name, await this.tagService.getTagByCategory(this.allCategories[i].name));
     }
     this.tagList = Array.from(this.sideBarOptions.values());
-    console.log(this.tagList)
   }
 
   // Compile list of docos to show in the right based on tag/category selected
@@ -84,33 +78,38 @@ export class DocumentaryListComponent implements OnInit {
     this.tagList.forEach(tags => {
       tags.forEach(async tag => {
           if(tag.name == this.selected) {
-          console.log("Is tag");
           this.isCategory = false;
           let tag = await this.tagService.getTagByName(this.selected);
           let category = await this.categoryService.getCategoryByName(tag[0].categoryName);
           this.prefix = category[0].prefix;
           this.docoList = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5);
-          this.previouslyTag = true;
+
+          // Firebase bug
+          if(this.docoList.length === 1) {
+            console.log("Re-query");
+            this.docoList = await this.docoService.getDocumentaryByTag("");
+            this.docoList = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5);
+          }
         }
       });
-    });
+    });       
     this.allCategories.forEach(async category => {
       if(category.name == this.selected) {
-        console.log("Is category");
         this.isCategory = true;
         let category = await this.categoryService.getCategoryByName(this.selected);
         this.prefix = category[0].prefix;
-        // Some sort of issue with firebase. Need to reset the list somehow because the firebase query is returning the previous result (firebase bug?)
-        if(this.firstLoaded && this.previouslyTag) {
-          this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
-          this.docoList = await this.docoService.getDocumentaryByTag("");
-          this.firstLoaded = false;
-          this.previouslyTag = false;
-        }
         this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
+        
+        // Firebase bug
+        if(this.docoList.length === 1) {
+          console.log("Re-query");
+          this.docoList = await this.docoService.getDocumentaryByTag("");
+          this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
+        }
         this.count += 5;
       }
     });
+    
   }
 
   // Convert '1' to '00001' (the format of a doco's index)
@@ -122,6 +121,10 @@ export class DocumentaryListComponent implements OnInit {
 
   // When the user scrolls, loads the next part of the list (WIP).
   async onScroll() {
+    this.moreDocos();
+  }
+
+  async moreDocos() {
     let newDocos = []
     if(this.isCategory) {
       newDocos = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(this.count), 5)
@@ -174,9 +177,13 @@ export class DocumentaryListComponent implements OnInit {
 
   // Displays or removes tags in the column when collapsing sidebar on mobile
   toggleTagVisibility(display: string) {
-    var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
-    tagLinks.forEach(element => {
-      element.style.display = display;
-    });
+    if(document.getElementById('sidebar-mobile')) {
+      if(document.getElementById('sidebar-mobile').children) {
+        var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
+        tagLinks.forEach(element => {
+          element.style.display = display;
+        });
+      }
+    }
   }
 }

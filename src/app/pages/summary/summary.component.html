@@ -1,6 +1,8 @@
 <div class="content words">
   <h2 class="title">{{currentDoco.name}}</h2>
-  <p style="font-weight:lighter; color:darkgrey" class="title"><a routerLink="/documentariesList/{{currentTag.split(' ').join('-')}}">#{{currentTag}}</a></p>
+  <p *ngFor="let tag of currentTags" class="tagsList">
+    <a routerLink="/documentariesList/{{tag.split(' ').join('-')}}">#{{tag}}</a>
+  </p>
   <div class="videoWrapper" 
     *ngIf="currentDoco.embed !== 'Netflix' && 
            currentDoco.embed !== 'NA' &&
