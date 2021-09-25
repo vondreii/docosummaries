@@ -67,9 +67,11 @@ export class DocumentaryListComponent implements OnInit {
   // For every category, get all the tags and put them into the map.
   async buildSideBarOptions() {
     for (let i = 0; i < this.allCategories.length; i++) {
+      console.log(this.allCategories[i].name);
       this.sideBarOptions.set(this.allCategories[i].name, await this.tagService.getTagByCategory(this.allCategories[i].name));
     }
     this.tagList = Array.from(this.sideBarOptions.values());
+    console.log(this.tagList)
   }
 
   // Compile list of docos to show in the right based on tag/category selected
