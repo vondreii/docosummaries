@@ -126,6 +126,9 @@ export class DocumentaryListComponent implements OnInit {
 
   // When the user scrolls, loads the next part of the list
   async moreDocos() {
+    if(!this.docoList) {
+      return;
+    }
     let newDocos = []
     if(this.isCategory) {
       newDocos = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(this.count), 5)
