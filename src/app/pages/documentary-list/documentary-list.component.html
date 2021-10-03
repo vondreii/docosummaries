@@ -3,43 +3,91 @@
   <div id="sidebar-mobile" class="sidebar-mobile">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <div *ngFor="let tags of tagList">
-      <details open>
-        <summary class="category-mobile">
-          <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
-            class="selectedLink sidebarLink">
-            {{tags[0].categoryName }}</a>
-          <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
-            class="lightGreyText sidebarLink">
-            {{tags[0].categoryName }}</a>
-        </summary>
-        <div *ngFor="let tag of tags" class="tag-mobile">
-          <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
-            class="selectedLink sidebarLink pl-3">
-            #{{tag.name}}</a>
-          <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)"
-            class="lightGreyText sidebarLink pl-3">
-            #{{tag.name}}</a>
-        </div>
-      </details>
+      <div *ngIf="tags[0].categoryName === tagCategory">
+        <details open>
+          <summary class="category-mobile">
+            <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="selectedLink sidebarLink">
+              {{tags[0].categoryName }}</a>
+            <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="lightGreyText sidebarLink">
+              {{tags[0].categoryName }}</a>
+          </summary>
+          <div *ngFor="let tag of tags" class="tag-mobile">
+            <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="selectedLink sidebarLink pl-3">
+              #{{tag.name}}</a>
+            <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="lightGreyText sidebarLink pl-3">
+              #{{tag.name}}</a>
+          </div>
+        </details>
+      </div>
+      <div *ngIf="tags[0].categoryName !== tagCategory">
+        <details closed>
+          <summary class="category-mobile">
+            <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="selectedLink sidebarLink">
+              {{tags[0].categoryName }}</a>
+            <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="lightGreyText sidebarLink">
+              {{tags[0].categoryName }}</a>
+          </summary>
+          <div *ngFor="let tag of tags" class="tag-mobile">
+            <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="selectedLink sidebarLink pl-3">
+              #{{tag.name}}</a>
+            <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="lightGreyText sidebarLink pl-3">
+              #{{tag.name}}</a>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
   <!-- Sidebar Desktop -->
   <div class="sidebar-desktop">
     <div *ngFor="let tags of tagList">
-      <details open>
-        <summary>
-            <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="selectedLink sidebarLink">
+      <div *ngIf="tags[0].categoryName === tagCategory">
+        <details open>
+          <summary>
+            <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="selectedLink sidebarLink">
               {{tags[0].categoryName }}</a>
-            <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)" class="lightGreyText sidebarLink">
+            <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="lightGreyText sidebarLink">
               {{tags[0].categoryName }}</a>
-        </summary>
-        <div *ngFor="let tag of tags">
-            <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)" class="selectedLink sidebarLink pl-3">
+          </summary>
+          <div *ngFor="let tag of tags">
+            <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="selectedLink sidebarLink pl-3">
               #{{tag.name}}</a>
-            <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)" class="lightGreyText sidebarLink pl-3">
+            <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="lightGreyText sidebarLink pl-3">
               #{{tag.name}}</a>
-        </div>
-      </details>
+          </div>
+        </details>
+      </div>
+      <div *ngIf="tags[0].categoryName !== tagCategory">
+        <details closed>
+          <summary>
+            <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="selectedLink sidebarLink">
+              {{tags[0].categoryName }}</a>
+            <a *ngIf="selected != tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
+              class="lightGreyText sidebarLink">
+              {{tags[0].categoryName }}</a>
+          </summary>
+          <div *ngFor="let tag of tags">
+            <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="selectedLink sidebarLink pl-3">
+              #{{tag.name}}</a>
+            <a *ngIf="selected != tag.name" routerLink="./" (click)="changeSelection(tag.name)"
+              class="lightGreyText sidebarLink pl-3">
+              #{{tag.name}}</a>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
   <!-- Summaries List -->

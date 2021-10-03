@@ -23,6 +23,7 @@ export class DocumentaryListComponent implements OnInit {
   navlink: string;
   type: string;
   previousSelect: string = "";
+  tagCategory: string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -67,11 +68,11 @@ export class DocumentaryListComponent implements OnInit {
   // For every category, get all the tags and put them into the map.
   async buildSideBarOptions() {
     for (let i = 0; i < this.allCategories.length; i++) {
-      console.log(this.allCategories[i].name);
       this.sideBarOptions.set(this.allCategories[i].name, await this.tagService.getTagByCategory(this.allCategories[i].name));
     }
     this.tagList = Array.from(this.sideBarOptions.values());
-    console.log(this.tagList)
+    
+    this.toggleTagVisibility("sidebar-desktop", "none");
   }
 
   // Compile list of docos to show in the right based on tag/category selected
@@ -83,12 +84,12 @@ export class DocumentaryListComponent implements OnInit {
           this.isCategory = false;
           let tag = await this.tagService.getTagByName(this.selected);
           let category = await this.categoryService.getCategoryByName(tag[0].categoryName);
+          this.tagCategory = category[0].name;
           this.prefix = category[0].prefix;
           this.docoList = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5);
 
           // Firebase bug
           if(this.docoList.length === 1) {
-            console.log("Re-query");
             this.docoList = await this.docoService.getDocumentaryByTag("");
             this.docoList = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5);
           }
@@ -104,7 +105,6 @@ export class DocumentaryListComponent implements OnInit {
         
         // Firebase bug
         if(this.docoList.length === 1) {
-          console.log("Re-query");
           this.docoList = await this.docoService.getDocumentaryByTag("");
           this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
         }
@@ -168,24 +168,24 @@ export class DocumentaryListComponent implements OnInit {
 
   // Sets the width of the sidebar when it is opened
   async openNav() {
-    this.toggleTagVisibility("none");
+    this.toggleTagVisibility("sidebar-mobile", "none");
     document.getElementById("sidebar-mobile").style.width = "300px";
     await new Promise(resolve => setTimeout(resolve, 500));
-    this.toggleTagVisibility("block");
+    this.toggleTagVisibility("sidebar-mobile", "block");
   }
 
   // Closes the sidebar and hides the text
   async closeNav() {
-    this.toggleTagVisibility("none");
+    this.toggleTagVisibility("sidebar-mobile", "none");
     await new Promise(resolve => setTimeout(resolve, 10));
     document.getElementById("sidebar-mobile").style.width = "0";
   }
 
   // Displays or removes tags in the column when collapsing sidebar on mobile
-  toggleTagVisibility(display: string) {
-    if(document.getElementById('sidebar-mobile')) {
-      if(document.getElementById('sidebar-mobile').children) {
-        var tagLinks = Array.from(document.getElementById('sidebar-mobile').children as HTMLCollectionOf<HTMLElement>);
+  toggleTagVisibility(sidebar: string, display: string) {
+    if(document.getElementById(sidebar)) {
+      if(document.getElementById(sidebar).children) {
+        var tagLinks = Array.from(document.getElementById(sidebar).children as HTMLCollectionOf<HTMLElement>);  
         tagLinks.forEach(element => {
           element.style.display = display;
         });
