@@ -14,20 +14,23 @@
 <div class="browseByTags-desktop">
   <div class="browseByTags pb-3 mb-3">
     <h2 class="pb-3 pt-5">Browse By <span>Tags</span></h2>
+    <!-- First Row -->
     <div *ngFor="let tag of tagsList | slice:1:4; let i=index" style="display: inline-flex;" role="listitem">
-      <div class="browseByTags pb-3 mb-2 mr-4">
+      <div class="browseByTags pb-3 mb-2 ml-2 mr-2">
         <app-tag [paramName]="tag.name"></app-tag>
       </div>
     </div>
     <br>
+    <!-- Second Row -->
     <div *ngFor="let tag of tagsList | slice:4:6; let i=index" style="display: inline-flex;" role="listitem">
-      <div class="browseByTags pb-3 mb-2 mr-4">
+      <div class="browseByTags pb-3 mb-2 ml-2 mr-2">
         <app-tag [paramName]="tag.name"></app-tag>
       </div>
     </div>
     <br>
-    <div *ngFor="let tag of tagsList | slice:7:8; let i=index" style="display: inline-flex;" role="listitem">
-      <div class="browseByTags pb-3 mb-2 mr-4">
+    <!-- Third Row -->
+    <div *ngFor="let tag of tagsList | slice:8:9; let i=index" style="display: inline-flex;" role="listitem">
+      <div class="browseByTags pb-3 mb-2 ml-2 mr-2">
         <app-tag [paramName]="tag.name"></app-tag>
       </div>
     </div>
@@ -52,7 +55,7 @@
 <div class="browseByCategories pb-3 mb-5">
   <h2 class="pb-5 pt-5">Browse By <span>Categories</span></h2>
   <div class="row">
-    <div class="column pb-4" *ngFor="let category of categoryList | slice:0:6; let i=index"  role="listitem">
+    <div class="column pb-4" *ngFor="let category of categoryList | slice:0:4; let i=index"  role="listitem">
       <app-card 
         [categoryName]="category.name" 
         [categoryDescription]="category.categoryDescription" 
