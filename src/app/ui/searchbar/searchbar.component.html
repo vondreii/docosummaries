@@ -20,21 +20,20 @@
   <ul class="list-group list-group-flush searchLinks">
     <!-- results of ngFor is passed to appFilter with argument searchText -->
     <li class="list-group-item" 
-      routerLink="/documentariesList/
-            {{c.substring(c.indexOf('START_STR'),c.indexOf(' END_STR'))
-            .split('#').join('')
-            .split(' ').join('-')
-            .split('-(Category)').join('')}}"
       *ngFor="let c of searchString | appFilter: searchText | slice: 0:5; let i=index" 
+      routerLink="{{c.substring(c.indexOf('@@@')+3,c.lastIndexOf('@@@'))}}"
       appHighlight
-      [searchedWord]="searchText" [classToApply]="'font-weight-bold'" [setTitle]="'true'" [hidden]="searchText==''">
+      (click)="onSelect('')"
+      [searchedWord]="searchText" 
+      [classToApply]="'font-weight-bold'" 
+      [setTitle]="'true'" 
+      [hidden]="searchText==''">
+        <!-- Debug -->
+        <!-- {{c.substring(c.indexOf('START_STR')+9,c.indexOf('END_STR'))}} -->
+        <!-- {{c.substring(c.indexOf('@@@')+3,c.lastIndexOf('@@@'))}} -->
         <a (click)="onSelect('')" 
-          routerLink="/documentariesList/
-            {{c.substring(c.indexOf('START_STR'),c.indexOf(' END_STR'))
-            .split('#').join('')
-            .split(' ').join('-')
-            .split('-(Category)').join('')}}" 
-          class="link">{{c.substring(c.indexOf('START_STR')+9,c.indexOf(' END_STR'))}}</a>
+          routerLink="{{c.substring(c.indexOf('@@@')+3,c.lastIndexOf('@@@'))}}" 
+          class="link">{{c.substring(c.indexOf('START_STR')+9,c.indexOf('END_STR'))}}</a>
     </li>
   </ul>
 </div>

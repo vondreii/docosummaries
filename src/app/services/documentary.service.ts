@@ -8,6 +8,13 @@ export class DocumentaryService {
 
   constructor(private db: AngularFirestore) { }
 
+  
+  getAllDocumentaries() {
+    return new Promise<any>((resolve)=> {
+      this.db.collection('documentaries').valueChanges({ idField: 'id' }).subscribe(docos => resolve(docos));
+    })
+  }
+
   getDocumentaryByTag(tagName: string) {
     return new Promise<any>((resolve)=> {
       this.db.collection('documentaries', ref => ref.where('tagName', 'array-contains', tagName)).valueChanges().subscribe(doco => resolve(doco))

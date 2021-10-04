@@ -1,6 +1,9 @@
 .list-group-item {
   padding: 5px;
 }
+.list-group li:hover {
+  cursor: pointer;
+}
 .search {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -18,7 +21,7 @@
   border-radius: 10px;
   background-color: white;
   position: absolute;
-  width: 80%;
+  width: 100%;
   box-shadow: 5px 10px 28px #353446;
   text-align: left;
 }
@@ -38,34 +41,6 @@
   text-align: left;
 }
 
-/* Medium screens */
-@media screen and (max-width: 1200px) {
-  .searchLinks {
-    width: 80%;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .searchLinks {
-    width: 80%;
-  }
-}
-/* Smaller screens */
-@media screen and (max-width: 800px) {
-  .searchLinks {
-    width: 80%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .searchLinks {
-    width: 80%;
-  }
-}
-@media screen and (max-width: 400px) {
-  .searchLinks {
-    width: 80%;
-  }
-}
-
 // Searchbar - footer
 .location-footer ::ng-deep.form-control {
   width: 100%;
@@ -76,13 +51,10 @@
   width: 100%;
 }
 
-@media only screen and (max-width: 800px) {
-  .location-home {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
+@media only screen and (max-width: 600px) {
   .location-home ::ng-deep.form-control {
-    width: 100%;
+    margin-left: 5%;
+    width: 90%;
   }
 }
 
@@ -112,6 +84,10 @@
   }
 }
 @media only screen and (max-width: 991px) {
+  .searchLinks {
+    margin-left: 0;
+    width: 100%;
+  }
   .location-navbar ::ng-deep.form-control {
     width: 100%;
   }
