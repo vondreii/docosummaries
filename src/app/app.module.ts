@@ -22,6 +22,10 @@ import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SafePipe, SummaryComponent } from './pages/summary/summary.component';
 
+// Searchbar
+// import { HighlightDirective } from './ui/searchbar/highlight.directive';
+// import { FilterPipe } from './ui/searchbar/filter.pipe';
+// import { SearchComponent } from './ui/searchbar/searchbar.component';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { SafePipe, SummaryComponent } from './pages/summary/summary.component';
     AppComponent,
     AboutComponent,
     SummaryComponent,
-    SafePipe
+    SafePipe,
+    // Searchbar
+    // HighlightDirective,
+    // FilterPipe,
+    // SearchComponent,
   ],
   imports: [
     BrowserModule,

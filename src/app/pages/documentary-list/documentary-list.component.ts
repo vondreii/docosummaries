@@ -33,6 +33,7 @@ export class DocumentaryListComponent implements OnInit {
     private router: Router
   ) { 
     this.route.params.subscribe(params => {
+      document.documentElement.scrollTop = 0;
       this.getSelectedParams().then(() => {
         this.getCategoryList().then(() => {
           this.buildSideBarOptions().then(() => {
@@ -49,8 +50,16 @@ export class DocumentaryListComponent implements OnInit {
   // Get the tag or category selected based on the URL.
   async getSelectedParams() {
     let href = document.location.href;
-    href = href.substring(href.lastIndexOf("/")+1, href.length);
+    console.log(href.indexOf("START_STR"))
+    if(href.indexOf("START_STR") > 0) {
+      href = href.substring(href.lastIndexOf("START_STR"), href.length);
+    }
+    else {
+      href = href.substring(href.lastIndexOf("/")+1, href.length);
+    }
     href = href.split('%20').join(' ');
+    href = href.split('%0A').join('');
+    href = href.split('START_STR').join('');
     href = href.split('-').join(' ');
     href = href.split('%28').join('(');
     href = href.split('%29').join(')');

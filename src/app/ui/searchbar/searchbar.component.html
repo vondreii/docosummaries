@@ -1,1 +1,40 @@
-<!-- <p>searchbar works!</p> -->
+<div class="search">
+  <div class="location-navbar" *ngIf="searchLocation === 'navbar'">
+    <div class="form-group">
+      <input type="email" class="form-control form-control-nav" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
+        placeholder="Enter text to search" autofocus>
+    </div>
+  </div>
+  <div class="location-home" *ngIf="searchLocation === 'home'">
+    <div class="form-group">
+      <input type="email" class="form-control form-control-nav" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
+        placeholder="Enter text to search" autofocus>
+    </div>
+  </div>
+  <div class="location-footer" *ngIf="searchLocation === 'footer'">
+    <div class="form-group">
+      <input type="email" class="form-control form-control-nav" id="search-text" aria-describedby="search-text"
+        [(ngModel)]="searchText" placeholder="Enter text to search" autofocus>
+    </div>
+  </div>
+  <ul class="list-group list-group-flush searchLinks">
+    <!-- results of ngFor is passed to appFilter with argument searchText -->
+    <li class="list-group-item" 
+      routerLink="/documentariesList/
+            {{c.substring(c.indexOf('START_STR'),c.indexOf(' END_STR'))
+            .split('#').join('')
+            .split(' ').join('-')
+            .split('-(Category)').join('')}}"
+      *ngFor="let c of searchString | appFilter: searchText | slice: 0:5; let i=index" 
+      appHighlight
+      [searchedWord]="searchText" [classToApply]="'font-weight-bold'" [setTitle]="'true'" [hidden]="searchText==''">
+        <a (click)="onSelect('')" 
+          routerLink="/documentariesList/
+            {{c.substring(c.indexOf('START_STR'),c.indexOf(' END_STR'))
+            .split('#').join('')
+            .split(' ').join('-')
+            .split('-(Category)').join('')}}" 
+          class="link">{{c.substring(c.indexOf('START_STR')+9,c.indexOf(' END_STR'))}}</a>
+    </li>
+  </ul>
+</div>

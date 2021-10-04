@@ -1,3 +1,118 @@
-p {
-  color: #8a888f;
+.list-group-item {
+  padding: 5px;
+}
+.search {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+  z-index: 1;
+}
+.round-searchbox {
+  border-radius: 25px;
+}
+.square-searchbox {
+  border-radius: 5px;
+}
+/* parent searchLinks div */
+.searchLinks {
+  border-radius: 10px;
+  background-color: white;
+  position: absolute;
+  width: 80%;
+  box-shadow: 5px 10px 28px #353446;
+  text-align: left;
+}
+/* The div that is around the links that turns grey on hover */
+.searchLinks div {
+  padding: 10px 10px;
+}
+.searchLinks div:hover {
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+/* Individual links */
+.searchLinks a {
+  color: #676572;
+  text-decoration: none;
+  transition: ease-in;
+  text-align: left;
+}
+
+/* Medium screens */
+@media screen and (max-width: 1200px) {
+  .searchLinks {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .searchLinks {
+    width: 80%;
+  }
+}
+/* Smaller screens */
+@media screen and (max-width: 800px) {
+  .searchLinks {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .searchLinks {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .searchLinks {
+    width: 80%;
+  }
+}
+
+// Searchbar - footer
+.location-footer ::ng-deep.form-control {
+  width: 100%;
+}
+
+// Searchbar - home
+.location-home ::ng-deep.form-control {
+  width: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+  .location-home {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .location-home ::ng-deep.form-control {
+    width: 100%;
+  }
+}
+
+// Searchbar - Navbar
+.location-navbar ::ng-deep.form-control {
+  width: 550px;
+}
+
+@media only screen and (min-width: 1321px) and (max-width: 1520px) {
+  .location-navbar ::ng-deep.form-control {
+    width: 450px;
+  }
+}
+@media only screen and (min-width: 1221px) and (max-width: 1320px) {
+  .location-navbar ::ng-deep.form-control {
+    width: 350px;
+  }
+}
+@media only screen and (min-width: 1121px) and (max-width: 1220px) {
+  .location-navbar ::ng-deep.form-control {
+    width: 250px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1120px) {
+  .location-navbar ::ng-deep.form-control {
+    width: 120px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .location-navbar ::ng-deep.form-control {
+    width: 100%;
+  }
 }

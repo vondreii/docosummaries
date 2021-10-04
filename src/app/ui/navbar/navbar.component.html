@@ -18,14 +18,14 @@
     <!-- Empty Link to push others to the right -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-          <a class="nav-link" href="#"></a>
+        <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item active">
-          <app-searchbar></app-searchbar>
+        <app-searchbar [searchLocation]="'navbar'"></app-searchbar>
       </li>
     </ul>
 
-    <ul class="navbar-nav padding-custom">
+    <ul class="navbar-nav">
         <!-- Home -->
         <li *ngIf="currentRoute==''" class="nav-item">
           <a class="nav-link pr-5 font-14 activeLink" routerLink=""><p>Home</p></a>
