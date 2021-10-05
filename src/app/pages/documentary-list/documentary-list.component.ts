@@ -33,6 +33,9 @@ export class DocumentaryListComponent implements OnInit {
     private router: Router
   ) { 
     this.route.params.subscribe(params => {
+      
+      let href = document.location.href;
+      console.log(href);
       document.documentElement.scrollTop = 0;
       this.getSelectedParams().then(() => {
         this.getCategoryList().then(() => {

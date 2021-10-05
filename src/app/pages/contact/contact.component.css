@@ -44,7 +44,7 @@ span {
 }
 
 .formBackground {
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(235, 235, 235);
 }
 
 .inputPadding {
@@ -60,12 +60,16 @@ span {
 }
 
 .reset {
-  background-color: rgb(228, 228, 228);
+  background-color: white;
   border: 1px solid orange;
   color: orange;
   padding: 10px 20px;
   border-radius: 10px;
   margin-right: 25px;
+}
+
+.reset b {
+  background-color: white !important;
 }
 
 .submit {
@@ -74,6 +78,10 @@ span {
   color: rgb(228, 228, 228);
   padding: 10px 20px;
   border-radius: 10px;
+}
+
+.submit b {
+  color: white;
 }
 
 /* Contact form */
@@ -91,5 +99,11 @@ span {
   }
   .form-mobile {
     display: block;
+  }
+  .reset {
+    width: 100%;
+  }
+  .submit {
+    width: 100%;
   }
 }

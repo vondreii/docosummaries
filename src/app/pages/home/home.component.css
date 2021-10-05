@@ -117,3 +117,8 @@ span {
     display: block;
   }
 }
+
+a:hover,
+a app-card:hover {
+  text-decoration: none;
+}

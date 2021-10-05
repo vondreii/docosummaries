@@ -94,7 +94,7 @@
   <div class="summariesWidth">
     <button class="openbtn" (click)="openNav()">Filter</button>
     <br>
-    <h1>{{selected}} Documentaries</h1>
+    <h1 *ngIf="selected !== 'documentariesList'">{{selected}} Documentaries</h1>
     <div class="list">
       <ng-container *ngIf="docoList">
         <ng-container *ngFor="let doco of docoList">

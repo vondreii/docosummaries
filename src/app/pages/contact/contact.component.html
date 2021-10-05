@@ -26,7 +26,7 @@
     </form>
   </div>
   <div class="p-1">
-    <div class="form-mobile formBackground p-2" style="border-radius: 10px">
+    <div class="form-mobile formBackground p-3" style="border-radius: 10px">
       <form action="https://formspree.io/f/xrgropnl" class="formBackground" method="POST" data-netlify="true">
         <div class="form-group" class="formBackground p-2">
           <input type="text" name="message" class="form-control inputPadding" id="message" placeholder="NAME">
@@ -39,9 +39,11 @@
           <textarea name="message" style="height:200px" class="form-control inputPadding" id="message"
             placeholder="MESSAGE"></textarea>
         </div>
-        <div class="form-group" class="formBackground p-2">
-          <button type="reset" class="button reset"><b class="formBackground">RESET</b></button>
-          <button type="submit" class="button submit"><b style="background-color:orange">SUBMIT</b></button>
+        <div class="form-group " class="formBackground p-2 button-container">
+          <button type="submit" class="button submit p-3"><b style="background-color:orange">SUBMIT</b></button>
+          <br>
+          <br>
+          <button type="reset" class="button reset p-3"><b class="formBackground">RESET</b></button>
         </div>
         <input type="hidden" name="_next" value="/contact" />
       </form>
