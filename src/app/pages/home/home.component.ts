@@ -4,19 +4,18 @@ import { TagService } from 'src/app/services/tag.service';
 
 @Component({
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.scss']
+  styleUrls: ['home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-  documentariesLink: any = "/documentariesList";
+  documentariesLink: any = '/documentariesList';
   tagsList: any;
-  tagName: string
+  tagName: string;
   categoryList: any;
 
   constructor(
     private tagService: TagService,
     private categoryService: CategoryService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getTagsList();

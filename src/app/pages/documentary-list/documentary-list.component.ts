@@ -20,11 +20,9 @@ export class DocumentaryListComponent implements OnInit {
   tagList = new Array();
   docoList: any;
   isCategory: boolean = true;
-  navlink: string;
-  type: string;
-  previousSelect: string = "";
   tagCategory: string = "";
 
+  // Build Sidebar, Initialize docos list for selected category/tag
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
@@ -33,9 +31,6 @@ export class DocumentaryListComponent implements OnInit {
     private router: Router
   ) { 
     this.route.params.subscribe(params => {
-      
-      let href = document.location.href;
-      console.log(href);
       document.documentElement.scrollTop = 0;
       this.getSelectedParams().then(() => {
         this.getCategoryList().then(() => {
@@ -53,7 +48,6 @@ export class DocumentaryListComponent implements OnInit {
   // Get the tag or category selected based on the URL.
   async getSelectedParams() {
     let href = document.location.href;
-    console.log(href.indexOf("START_STR"))
     if(href.indexOf("START_STR") > 0) {
       href = href.substring(href.lastIndexOf("START_STR"), href.length);
     }
@@ -68,7 +62,7 @@ export class DocumentaryListComponent implements OnInit {
     href = href.split('%29').join(')');
     this.selected = href;
     if(this.selected === 'documentariesList') {
-      this.changeSelection("Health");
+      this.changeSelection('Health');
     }
   }
 
@@ -84,6 +78,20 @@ export class DocumentaryListComponent implements OnInit {
     }
     this.tagList = Array.from(this.sideBarOptions.values());
     
+    for (let i = 0; i < this.tagList.length; i++) {
+      let findCategoryOfTag = "";
+      for (let j = 0; j < this.tagList[i].length; j++) {
+        if(this.tagList[i][j].name === this.selected) {
+            findCategoryOfTag = this.tagList[i][j].categoryName;
+        }
+      }
+      this.tagList[i].category = this.allCategories[i].name;
+      
+      if(this.allCategories[i].name === this.selected || findCategoryOfTag !== "")
+        this.tagList[i].expanded = true;
+      else 
+        this.tagList[i].expanded = false;
+    }
     this.toggleTagVisibility("sidebar-desktop", "none");
   }
 
@@ -168,7 +176,7 @@ export class DocumentaryListComponent implements OnInit {
   }
 
   // Change what is selected on the sidebar menu
-  async changeSelection(paramName) { 
+  async changeSelection(paramName: string) {
     this.closeNav();
     await new Promise(resolve => setTimeout(resolve, 300));
     let nav = "/documentariesList/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");

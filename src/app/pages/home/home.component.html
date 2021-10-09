@@ -55,7 +55,7 @@
 <div class="browseByCategories pb-3 mb-5">
   <h2 class="pb-5 pt-5">Browse By <span>Categories</span></h2>
   <div class="row">
-    <div class="column pb-4" *ngFor="let category of categoryList | slice:4:8; let i=index"  role="listitem">
+    <div class="column pb-4" *ngFor="let category of categoryList | slice:5:8; let i=index"  role="listitem">
       <a href="/documentariesList/{{category.name.split(' ').join('-')}}">
         <app-card 
           [categoryName]="category.name" 

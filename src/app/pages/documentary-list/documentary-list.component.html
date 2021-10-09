@@ -3,8 +3,10 @@
   <div id="sidebar-mobile" class="sidebar-mobile">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <div *ngFor="let tags of tagList">
-      <div *ngIf="tags[0].categoryName === tagCategory">
+      <!-- Expanded Category -->
+      <div *ngIf="tags.expanded">
         <details open>
+          <!-- Category -->
           <summary class="category-mobile">
             <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
               class="selectedLink sidebarLink">
@@ -13,6 +15,7 @@
               class="lightGreyText sidebarLink">
               {{tags[0].categoryName }}</a>
           </summary>
+          <!-- Tag -->
           <div *ngFor="let tag of tags" class="tag-mobile">
             <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
               class="selectedLink sidebarLink pl-3">
@@ -23,8 +26,10 @@
           </div>
         </details>
       </div>
-      <div *ngIf="tags[0].categoryName !== tagCategory">
+      <!-- Non expanded Category -->
+      <div *ngIf="!tags.expanded">
         <details closed>
+          <!-- Category -->
           <summary class="category-mobile">
             <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
               class="selectedLink sidebarLink">
@@ -33,6 +38,7 @@
               class="lightGreyText sidebarLink">
               {{tags[0].categoryName }}</a>
           </summary>
+          <!-- Tag -->
           <div *ngFor="let tag of tags" class="tag-mobile">
             <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
               class="selectedLink sidebarLink pl-3">
@@ -48,8 +54,10 @@
   <!-- Sidebar Desktop -->
   <div class="sidebar-desktop">
     <div *ngFor="let tags of tagList">
-      <div *ngIf="tags[0].categoryName === tagCategory">
+      <!-- Expanded Category -->
+      <div *ngIf="tags.expanded">
         <details open>
+          <!-- Category -->
           <summary>
             <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
               class="selectedLink sidebarLink">
@@ -58,6 +66,7 @@
               class="lightGreyText sidebarLink">
               {{tags[0].categoryName }}</a>
           </summary>
+          <!-- Tag -->
           <div *ngFor="let tag of tags">
             <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
               class="selectedLink sidebarLink pl-3">
@@ -68,8 +77,10 @@
           </div>
         </details>
       </div>
-      <div *ngIf="tags[0].categoryName !== tagCategory">
+      <!-- Non Expanded Category -->
+      <div *ngIf="!tags.expanded">
         <details closed>
+          <!-- Category -->
           <summary>
             <a *ngIf="selected == tags[0].categoryName" routerLink="./" (click)="changeSelection(tags[0].categoryName)"
               class="selectedLink sidebarLink">
@@ -78,6 +89,7 @@
               class="lightGreyText sidebarLink">
               {{tags[0].categoryName }}</a>
           </summary>
+          <!-- Tag -->
           <div *ngFor="let tag of tags">
             <a *ngIf="selected == tag.name" routerLink="./" (click)="changeSelection(tag.name)"
               class="selectedLink sidebarLink pl-3">
