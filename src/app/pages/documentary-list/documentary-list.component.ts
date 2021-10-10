@@ -35,7 +35,12 @@ export class DocumentaryListComponent implements OnInit {
       this.getSelectedParams().then(() => {
         this.getCategoryList().then(() => {
           this.buildSideBarOptions().then(() => {
-            this.listDocos();
+            this.listDocos().then(() => {
+              let loader = document.getElementById('loader');
+              loader.style.display = 'none';
+              let loaded = document.getElementById('loaded');
+              loaded.style.display = 'block';
+            });
           });
         });
       });
@@ -177,6 +182,11 @@ export class DocumentaryListComponent implements OnInit {
 
   // Change what is selected on the sidebar menu
   async changeSelection(paramName: string) {
+    let loader = document.getElementById('loader');
+    loader.style.display = 'block';
+    let loaded = document.getElementById('loaded');
+    loaded.style.display = 'none';
+
     this.closeNav();
     await new Promise(resolve => setTimeout(resolve, 300));
     let nav = "/documentariesList/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");

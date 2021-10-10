@@ -186,3 +186,11 @@ h1 {
 summary:focus {
   outline-style: none;
 }
+
+#loader {
+  display: none;
+  padding-top: 50px;
+  top: 50%;
+  text-align: center;
+  font-size: 18px;
+}
