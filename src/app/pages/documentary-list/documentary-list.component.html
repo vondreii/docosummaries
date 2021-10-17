@@ -106,7 +106,12 @@
   <div class="summariesWidth">
     <button class="openbtn" (click)="openNav()">Filter</button>
     <br>
-    <h1 *ngIf="selected !== 'documentariesList'">{{selected}} Documentaries</h1>
+    <div id="loader">
+      <p>LOADING...</p>
+    </div>
+    <div id="loaded">
+      <h1 *ngIf="selected !== 'documentariesList'">{{selected}} Documentaries</h1>
+    </div>
     <div class="list">
       <ng-container *ngIf="docoList">
         <div id="loader">
@@ -123,7 +128,7 @@
           </ng-container>
         </div>
       </ng-container>
-      <ng-container *ngIf="docoList === undefined || docoList.length === 0">
+      <ng-container *ngIf="noDocumentaries">
           <p class="pt-5">There are no documentaries available.</p>
       </ng-container>
     </div>

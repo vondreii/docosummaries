@@ -21,6 +21,7 @@ export class DocumentaryListComponent implements OnInit {
   docoList: any;
   isCategory: boolean = true;
   tagCategory: string = "";
+  noDocumentaries = false;
 
   // Build Sidebar, Initialize docos list for selected category/tag
   constructor(
@@ -31,15 +32,15 @@ export class DocumentaryListComponent implements OnInit {
     private router: Router
   ) { 
     this.route.params.subscribe(params => {
+      this.toggleLoading('block', 'none');
+      this.noDocumentaries = false;
+      this.docoList = [];
       document.documentElement.scrollTop = 0;
       this.getSelectedParams().then(() => {
         this.getCategoryList().then(() => {
           this.buildSideBarOptions().then(() => {
-            this.listDocos().then(() => {
-              let loader = document.getElementById('loader');
-              loader.style.display = 'none';
-              let loaded = document.getElementById('loaded');
-              loaded.style.display = 'block';
+            this.listDocos().then(res => {
+              this.toggleLoading('none', 'block');
             });
           });
         });
@@ -48,6 +49,7 @@ export class DocumentaryListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      this.toggleLoading('block', 'none');
   }
 
   // Get the tag or category selected based on the URL.
@@ -115,8 +117,11 @@ export class DocumentaryListComponent implements OnInit {
 
           // Firebase bug
           if(this.docoList.length === 1) {
-            this.docoList = await this.docoService.getDocumentaryByTag("");
-            this.docoList = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5);
+            //this.docoList = await this.docoService.getDocumentaryByTag("");
+            //this.docoList = await this.docoService.getDocumentaryByTagLimited(this.selected, this.numberFormat(this.count), 5);
+          }
+          if(this.docoList.length === 0) {
+            this.noDocumentaries = true;
           }
         }
       });
@@ -130,13 +135,15 @@ export class DocumentaryListComponent implements OnInit {
         
         // Firebase bug
         if(this.docoList.length === 1) {
-          this.docoList = await this.docoService.getDocumentaryByTag("");
-          this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
+          //this.docoList = await this.docoService.getDocumentaryByTag("");
+          //this.docoList = await this.docoService.getDocumentaryByCategoryLimited(this.selected, this.numberFormat(0), 5);
+        }
+        if(this.docoList.length === 0) {
+          this.noDocumentaries = true;
         }
         this.count += 5;
       }
     });
-    
   }
 
   // Convert '1' to '00001' (the format of a doco's index)
@@ -180,13 +187,24 @@ export class DocumentaryListComponent implements OnInit {
     }); 
   }
 
+  // Toggles the visibility of the 'loading' text
+  toggleLoading(loaderStyle, loadedStyle) {
+    let loader = document.getElementById('loader');
+    let loaded = document.getElementById('loaded');
+    
+    if(loader !== null) {
+      loader.style.display = loaderStyle;
+    }
+    if(loaded !== null) {
+      loaded.style.display = loadedStyle;
+    }
+  }
+
   // Change what is selected on the sidebar menu
   async changeSelection(paramName: string) {
-    let loader = document.getElementById('loader');
-    loader.style.display = 'block';
-    let loaded = document.getElementById('loaded');
-    loaded.style.display = 'none';
-
+    this.noDocumentaries = false;
+    this.docoList = [];
+    this.toggleLoading('block', 'none');
     this.closeNav();
     await new Promise(resolve => setTimeout(resolve, 300));
     let nav = "/documentariesList/"+paramName.split(" ").join("-").split("(").join("%28").split(")").join("%29");
