@@ -22,6 +22,7 @@
     <li class="list-group-item" 
       *ngFor="let c of searchString | appFilter: searchText | slice: 0:5; let i=index" 
       routerLink="{{c.substring(c.indexOf('@@@')+3,c.lastIndexOf('@@@'))}}"
+      style="padding-left: 12px; padding-right: 12px"
       appHighlight
       (click)="onSelect('')"
       [searchedWord]="searchText" 
