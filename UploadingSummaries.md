@@ -7,8 +7,11 @@
 6. Fill in the fields, including the embed (use the Youtube embed link, not the URL)
 
 # Testing 
-1. Open Docosummaries in VS and type localhost: ng serve
+1. Open Docosummaries in VS and type localhost: `ng serve`
+   * If the versions are incompatible, run powershell and run `nvm use 12.20`
+   * If problems with CLI, run `npm remove -g @angular/cli`, then `npm install -g @angular/cli` to reinstall Angular CLI
+   * Re-open VS Code.
 2. Test:
-   1. Making sure it shows up on the list after clicking on the sidebar: categories + tags
-   2. If the embed works, on the page itself
-   3. Searching for it in the searchbar
+   * Making sure it shows up on the list after clicking on the sidebar: categories + tags
+   * If the embed works, on the page itself
+   * Searching for it in the searchbar
