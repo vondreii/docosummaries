@@ -37,13 +37,15 @@ export class DocumentaryListComponent implements OnInit {
       this.docoList = [];
       document.documentElement.scrollTop = 0;
       this.getSelectedParams().then(() => {
-        this.getCategoryList().then(() => {
-          this.buildSideBarOptions().then(() => {
-            this.listDocos().then(res => {
-              this.toggleLoading('none', 'block');
+        if(this.selected !== 'documentariesList') {
+          this.getCategoryList().then(() => {
+            this.buildSideBarOptions().then(() => {
+              this.listDocos().then(res => {
+                this.toggleLoading('none', 'block');
+              });
             });
           });
-        });
+        }
       });
     });
   }
@@ -85,21 +87,21 @@ export class DocumentaryListComponent implements OnInit {
     }
     this.tagList = Array.from(this.sideBarOptions.values());
     
-    for (let i = 0; i < this.tagList.length; i++) {
-      let findCategoryOfTag = "";
-      for (let j = 0; j < this.tagList[i].length; j++) {
-        if(this.tagList[i][j].name === this.selected) {
-            findCategoryOfTag = this.tagList[i][j].categoryName;
-        }
-      }
-      this.tagList[i].category = this.allCategories[i].name;
+    // for (let i = 0; i < this.tagList.length; i++) {
+    //   let findCategoryOfTag = "";
+    //   for (let j = 0; j < this.tagList[i].length; j++) {
+    //     if(this.tagList[i][j].name === this.selected) {
+    //         findCategoryOfTag = this.tagList[i][j].categoryName;
+    //     }
+    //   }
+    //   this.tagList[i].category = this.allCategories[i].name;
       
-      if(this.allCategories[i].name === this.selected || findCategoryOfTag !== "")
-        this.tagList[i].expanded = true;
-      else 
-        this.tagList[i].expanded = false;
-    }
-    this.toggleTagVisibility("sidebar-desktop", "none");
+    //   if(this.allCategories[i].name === this.selected || findCategoryOfTag !== "")
+    //     this.tagList[i].expanded = true;
+    //   else 
+    //     this.tagList[i].expanded = false;
+    // }
+    // this.toggleTagVisibility("sidebar-desktop", "none");
   }
 
   // Compile list of docos to show in the right based on tag/category selected
