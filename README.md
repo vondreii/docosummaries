@@ -6,9 +6,15 @@ This is the codebase to [Docosummaries.com](https://docosummaries.com/).
 
 Docosummaries is a place where you can learn about new documentaries, read plot summaries of documentaries, and find links where you could watch the documentaries for free online.
 
-It has a search functionality where you can look up documentaries that are currently already in the database.
+Functionalities include:
+- A searchbar to search for categories, tags, or documentaries.
+- A dynamic sidebar to filter documentaries based on what you select.
+- Youtube embeds so you can watch it directly from the site, next to the summary.
 
-It is still currently in its very early stages of development.
+Known Issues:
+- Sidebar that is expanded will collapse on page refresh 
+
+This is still currently in its very early stages of development.
 
 ## To Run
 
