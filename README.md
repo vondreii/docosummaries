@@ -2,7 +2,7 @@
 
 ## About 
 
-This is the codebase to [Docosummaries.com](https://docosummaries.com/).
+This is the codebase to [https://docosummaries.netlify.app/](https://docosummaries.netlify.app/).
 
 Docosummaries is a place where you can learn about new documentaries, read plot summaries of documentaries, and find links where you could watch the documentaries for free online.
 
@@ -29,7 +29,7 @@ This is still currently in its very early stages of development.
 
 ## Contact
 
-You can fill the form on the contact page at https://docosummaries.com/contact.
+You can fill the form on the contact page at https://docosummaries.netlify.app/contact.
 
 <br>
 
